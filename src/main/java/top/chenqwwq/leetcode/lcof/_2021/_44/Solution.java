@@ -1,5 +1,9 @@
 package top.chenqwwq.leetcode.lcof._2021._44;
 
+import java.util.Map;
+import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.RecursiveTask;
+
 /**
  * 剑指 Offer 44. 数字序列中某一位的数字
  * 数字以0123456789101112131415…的格式序列化到一个字符序列中。在这个序列中，第5位（从下标0开始计数）是5，第13位是1，第19位是4，等等。
@@ -27,6 +31,20 @@ package top.chenqwwq.leetcode.lcof._2021._44;
  **/
 public class Solution {
 	public int findNthDigit(int n) {
-		return -1;
+		long w = 1, cnt = 10, start = 0;
+		while (n >= w * cnt) {
+			n -= (w * cnt);
+			w++;
+			start = (int) Math.pow(10, w - 1);
+			cnt = 9 * start;
+		}
+
+		cnt = n / w;
+		int remainder = (int) (n % w);
+
+		start += cnt;
+
+		return (int) (start / Math.pow(10, w - remainder - 1) % 10);
 	}
+
 }
