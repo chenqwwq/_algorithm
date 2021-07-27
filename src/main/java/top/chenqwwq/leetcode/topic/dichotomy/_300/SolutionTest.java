@@ -1,4 +1,4 @@
-package top.chenqwwq.leetcode.topic.binary_search._300;
+package top.chenqwwq.leetcode.topic.dichotomy._300;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

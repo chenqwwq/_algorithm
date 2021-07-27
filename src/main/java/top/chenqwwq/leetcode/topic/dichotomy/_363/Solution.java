@@ -1,4 +1,4 @@
-package top.chenqwwq.leetcode.topic.binary_search._363;
+package top.chenqwwq.leetcode.topic.dichotomy._363;
 
 /**
  * @author chen
