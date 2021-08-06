@@ -67,4 +67,22 @@ public class BinarySearch {
 	public int find4(int[] nums, int target) {
 		return -1;
 	}
+
+
+	/**
+	 * 找到比　target 大的第一个数
+	 */
+	public int find5(int[] nums, int target) {
+		final int n = nums.length;
+		int left = 0, right = n - 1;
+		while (left <= right) {
+			final int mid = (left + right) >> 1;
+			if (nums[mid] < target) {
+				left = mid + 1;
+			} else {
+				right = mid - 1;
+			}
+		}
+		return left;
+	}
 }
