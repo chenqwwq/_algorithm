@@ -41,12 +41,12 @@ import java.util.List;
  * @date 2021-08-06
  **/
 public class Solution {
-	private int INF = 0x3f3f3f3f;
+	private static final int INF = 0x3f3f3f3f;
 
 	public int networkDelayTime(int[][] times, int n, int k) {
 		// 预处理图数据
-		List<int[]>[] edges = new ArrayList[n];
-		for (int i = 0; i < n; i++) {
+		List<int[]>[] edges = new ArrayList[n + 1];
+		for (int i = 1; i <= n; i++) {
 			edges[i] = new ArrayList<>();
 		}
 		for (int[] time : times) {
@@ -54,25 +54,38 @@ public class Solution {
 		}
 
 		// 朴素 Dijkstra 算法
-		int[] dic = new int[n];
-		boolean[] vis = new boolean[n];
+		// dic 表示各个节点到 k 的距离
+		int[] dic = new int[n + 1];
+		// vis 表示是否访问过
+		boolean[] vis = new boolean[n + 1];
 		Arrays.fill(dic, INF);
+
 		dic[k] = 0;
 		vis[k] = true;
-		for (int i = 0; i < n; i++) {
+		for (int[] i : edges[k]) {
+			dic[i[0]] = i[1];
+		}
+
+
+		for (int i = 1; i < n; i++) {
 			int min = -1;
 			// 找到未遍历过的路径最小的节点
-			for (int j = 0; j < n; j++) {
+			for (int j = 1; j <= n; j++) {
 				if (!vis[j] && (min == -1 || dic[min] > dic[j])) {
 					min = j;
 				}
 			}
 			vis[min] = true;
 			// 更新距离
-			for (int[] edge : edges[min]) 
-				dic[edge[0]] = Math.min(dic[edge[0]], );
-			}
+			for (int[] edge : edges[min])
+				dic[edge[0]] = Math.min(dic[edge[0]], dic[min] + edge[1]);
 		}
 
+		int ans = 0;
+		for (int i = 1; i <= n; i++) {
+			ans = Math.max(ans, dic[i]);
+		}
+
+		return ans == INF ? -1 : ans;
 	}
 }

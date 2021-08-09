@@ -6,6 +6,6 @@ package top.chenqwwq.leetcode.daily._20210806;
  **/
 public class Solution {
 	public int shortestPathLength(int[][] graph) {
-
+		return -1;
 	}
 }
