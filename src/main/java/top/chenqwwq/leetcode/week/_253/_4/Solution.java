@@ -8,7 +8,6 @@ public class Solution {
 
 	public int[] longestObstacleCourseAtEachPosition(int[] obstacles) {
 		int length = 0;
-		Thread
 		int[] dp = new int[obstacles.length];
 		int[] result = new int[obstacles.length];
 		for (int i = 0; i < obstacles.length; i++) {
