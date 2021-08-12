@@ -1,4 +1,4 @@
-package top.chenqwwq.basis.BinarySearch;
+package top.chenqwwq.basis.Dichotomy;
 
 /**
  * 以升序数组查询
@@ -6,7 +6,7 @@ package top.chenqwwq.basis.BinarySearch;
  * @author chen
  * @date 2021-07-09
  **/
-public class BinarySearch {
+public class Dichotomy {
 
 	/**
 	 * 找到等于 target 数

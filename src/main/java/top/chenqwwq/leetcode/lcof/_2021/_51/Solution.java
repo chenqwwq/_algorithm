@@ -21,19 +21,44 @@ package top.chenqwwq.leetcode.lcof._2021._51;
  **/
 public class Solution {
 	public int reversePairs(int[] nums) {
-		return mergeSort(nums, 0, nums.length - 1);
+		final int n = nums.length;
+		return fork(nums, 0, n - 1, new int[n]);
 	}
 
-	public int mergeSort(int[] nums, int left, int right) {
+	private int fork(int[] nums, int left, int right, int[] temp) {
 		if (left >= right) {
 			return 0;
 		}
 
 		int mid = (left + right) >> 1;
-		int ans = mergeSort(nums, left, mid) + mergeSort(nums, mid + 1, right);
+		return fork(nums, left, mid, temp) + fork(nums, mid + 1, right, temp) + join(nums, left, right, mid, temp);
+	}
 
-		// 合并
+	private int join(int[] nums, int left, int right, int mid, int[] temp) {
+		int ans = 0;
+		int k = left, i = left, j = mid + 1;
+		while (i <= mid && j <= right) {
+			if (nums[i] <= nums[j]) {
+				temp[k++] = nums[i++];
+			} else {
+				temp[k++] = nums[j++];
+				ans += mid - i + 1;
+			}
+		}
 
-		return -1;
+		while (i <= mid) {
+			temp[k++] = nums[i++];
+		}
+
+		while (j <= right) {
+			temp[k++] = nums[j++];
+		}
+
+		while (left <= right) {
+			nums[left] = temp[left];
+			left++;
+		}
+
+		return ans;
 	}
 }

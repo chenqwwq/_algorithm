@@ -36,24 +36,49 @@ package top.chenqwwq.leetcode.topic.dp._300;
  **/
 public class Solution {
 	public int lengthOfLIS(int[] nums) {
+		// dp 使用贪心+2分优化
 		final int n = nums.length;
 		int[] dp = new int[n];
-
+		dp[0] = nums[0];
 		int ans = 1;
-		dp[0] = 1;
+
 		for (int i = 1; i < n; i++) {
-			int tmp = 1;
-			for (int j = i - 1; j >= 0; j--) {
-				if (nums[i] > nums[j]) {
-					tmp = Math.max(dp[j] + 1, tmp);
+			// 在 dp 区间里面找第一个比nums大的数
+			int left = 0, right = ans;
+			while (left < right) {
+				final int mid = (left + right) >> 1;
+				if (dp[mid] < nums[i]) {
+					left = mid + 1;
+				} else {
+					right = mid - 1;
 				}
 			}
-			dp[i] = tmp;
-			if (tmp > ans) {
-				ans = tmp;
+			dp[left] = nums[i];
+			if (right == ans) {
+				ans++;
 			}
 		}
-
 		return ans;
 	}
+//	public int lengthOfLIS(int[] nums) {
+//		final int n = nums.length;
+//		int[] dp = new int[n];
+//
+//		int ans = 1;
+//		dp[0] = 1;
+//		for (int i = 1; i < n; i++) {
+//			int tmp = 1;
+//			for (int j = i - 1; j >= 0; j--) {
+//				if (nums[i] > nums[j]) {
+//					tmp = Math.max(dp[j] + 1, tmp);
+//				}
+//			}
+//			dp[i] = tmp;
+//			if (tmp > ans) {
+//				ans = tmp;
+//			}
+//		}
+//
+//		return ans;
+//	}
 }

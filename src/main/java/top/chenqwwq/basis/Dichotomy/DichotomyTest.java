@@ -1,4 +1,4 @@
-package top.chenqwwq.basis.BinarySearch;
+package top.chenqwwq.basis.Dichotomy;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -7,8 +7,8 @@ import org.junit.jupiter.api.Test;
  * @author chen
  * @date 2021-07-09
  **/
-class BinarySearchTest {
-	BinarySearch search = new BinarySearch();
+class DichotomyTest {
+	Dichotomy search = new Dichotomy();
 
 	@Test
 	void find1() {
