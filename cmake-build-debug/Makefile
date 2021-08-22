@@ -153,6 +153,30 @@ src/main/java/top/chenqwwq/leetcode/daily/_20210607/Solution.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/_algorithm.dir/build.make CMakeFiles/_algorithm.dir/src/main/java/top/chenqwwq/leetcode/daily/_20210607/Solution.cpp.s
 .PHONY : src/main/java/top/chenqwwq/leetcode/daily/_20210607/Solution.cpp.s
 
+src/main/java/top/chenqwwq/pat/advanced/_1021/Main.o: src/main/java/top/chenqwwq/pat/advanced/_1021/Main.cpp.o
+.PHONY : src/main/java/top/chenqwwq/pat/advanced/_1021/Main.o
+
+# target to build an object file
+src/main/java/top/chenqwwq/pat/advanced/_1021/Main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/_algorithm.dir/build.make CMakeFiles/_algorithm.dir/src/main/java/top/chenqwwq/pat/advanced/_1021/Main.cpp.o
+.PHONY : src/main/java/top/chenqwwq/pat/advanced/_1021/Main.cpp.o
+
+src/main/java/top/chenqwwq/pat/advanced/_1021/Main.i: src/main/java/top/chenqwwq/pat/advanced/_1021/Main.cpp.i
+.PHONY : src/main/java/top/chenqwwq/pat/advanced/_1021/Main.i
+
+# target to preprocess a source file
+src/main/java/top/chenqwwq/pat/advanced/_1021/Main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/_algorithm.dir/build.make CMakeFiles/_algorithm.dir/src/main/java/top/chenqwwq/pat/advanced/_1021/Main.cpp.i
+.PHONY : src/main/java/top/chenqwwq/pat/advanced/_1021/Main.cpp.i
+
+src/main/java/top/chenqwwq/pat/advanced/_1021/Main.s: src/main/java/top/chenqwwq/pat/advanced/_1021/Main.cpp.s
+.PHONY : src/main/java/top/chenqwwq/pat/advanced/_1021/Main.s
+
+# target to generate assembly for a file
+src/main/java/top/chenqwwq/pat/advanced/_1021/Main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/_algorithm.dir/build.make CMakeFiles/_algorithm.dir/src/main/java/top/chenqwwq/pat/advanced/_1021/Main.cpp.s
+.PHONY : src/main/java/top/chenqwwq/pat/advanced/_1021/Main.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -165,6 +189,9 @@ help:
 	@echo "... src/main/java/top/chenqwwq/leetcode/daily/_20210607/Solution.o"
 	@echo "... src/main/java/top/chenqwwq/leetcode/daily/_20210607/Solution.i"
 	@echo "... src/main/java/top/chenqwwq/leetcode/daily/_20210607/Solution.s"
+	@echo "... src/main/java/top/chenqwwq/pat/advanced/_1021/Main.o"
+	@echo "... src/main/java/top/chenqwwq/pat/advanced/_1021/Main.i"
+	@echo "... src/main/java/top/chenqwwq/pat/advanced/_1021/Main.s"
 .PHONY : help
 
 

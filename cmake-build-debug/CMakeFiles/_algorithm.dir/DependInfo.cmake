@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/chen/_algorithm/src/main/java/top/chenqwwq/leetcode/daily/_20210607/Solution.cpp" "/home/chen/_algorithm/cmake-build-debug/CMakeFiles/_algorithm.dir/src/main/java/top/chenqwwq/leetcode/daily/_20210607/Solution.cpp.o"
+  "/home/chen/_algorithm/src/main/java/top/chenqwwq/pat/advanced/_1021/Main.cpp" "/home/chen/_algorithm/cmake-build-debug/CMakeFiles/_algorithm.dir/src/main/java/top/chenqwwq/pat/advanced/_1021/Main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

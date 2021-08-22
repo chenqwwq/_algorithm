@@ -87,6 +87,9 @@
 		<Unit filename="/home/chen/_algorithm/src/main/java/top/chenqwwq/leetcode/daily/_20210607/Solution.cpp">
 			<Option target="_algorithm"/>
 		</Unit>
+		<Unit filename="/home/chen/_algorithm/src/main/java/top/chenqwwq/pat/advanced/_1021/Main.cpp">
+			<Option target="_algorithm"/>
+		</Unit>
 		<Unit filename="/home/chen/_algorithm/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
