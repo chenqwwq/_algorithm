@@ -1,4 +1,4 @@
-package PreSum
+package prefixsum
 
 import "fmt"
 
@@ -9,17 +9,16 @@ import "fmt"
  *
  */
 
-// 前缀和
-
-type PreSum struct {
+// PrefixSum 前缀和
+type PrefixSum struct {
 	data []int
 }
 
-// NewPreSum 从普通数组初始化前缀和数组
-func NewPreSum(data []int) *PreSum {
+// NewPrefixSum 从普通数组初始化前缀和数组
+func NewPrefixSum(data []int) *PrefixSum {
 	n := len(data)
 	if n == 0 {
-		return &PreSum{}
+		return &PrefixSum{}
 	}
 
 	buffer, sum := make([]int, n), 0
@@ -27,12 +26,12 @@ func NewPreSum(data []int) *PreSum {
 		sum += data[i]
 		buffer[i] = sum
 	}
-	return &PreSum{data: buffer}
+	return &PrefixSum{data: buffer}
 }
 
-// update 更新某个节点
+// Update update 更新某个节点
 // 时间复杂度为O(n)
-func (target *PreSum) Update(idx, num int) bool {
+func (target *PrefixSum) Update(idx, num int) bool {
 	n := len(target.data)
 	if idx >= n {
 		fmt.Printf("index error,[array length:{%d},idx:{%d}]", n, idx)
@@ -44,8 +43,8 @@ func (target *PreSum) Update(idx, num int) bool {
 	return true
 }
 
-// getRange 获取区间和
-func (target *PreSum) GetRange(left, right int) int {
+// GetRange 获取区间和
+func (target *PrefixSum) GetRange(left, right int) int {
 	if left < 0 || right >= len(target.data) {
 		panic(fmt.Sprintf("数组下标越界,left:{%d},right:{%d}", left, right))
 	}

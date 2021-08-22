@@ -1,4 +1,4 @@
-package top.chenqwwq.basis.DisjointSet;
+package top.chenqwwq.basis.unionfind;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

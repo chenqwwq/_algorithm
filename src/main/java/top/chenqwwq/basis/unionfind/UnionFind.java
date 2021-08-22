@@ -1,4 +1,4 @@
-package top.chenqwwq.basis.DisjointSet;
+package top.chenqwwq.basis.unionfind;
 
 /**
  * 并查集合的Java实现

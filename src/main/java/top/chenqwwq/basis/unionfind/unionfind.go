@@ -23,13 +23,13 @@ func NewUnionFind(size int) *UnionFind {
 
 type FindAndUnion interface {
 
-	// 是否相连
+	// Connect 两个节点是否相连
 	Connect(i, j int) bool
 
-	// 找到i对应的根节点
+	// Find 找到i对应的根节点
 	Find(i int) int
 
-	// 合并
+	// Union 合并两个节点
 	Union(i, j int)
 }
 

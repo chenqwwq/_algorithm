@@ -6,9 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/chen/_algorithm/src/main/java/top/chenqwwq/pat/advanced/_1017/Main.cpp
-iostream
+/home/chen/_algorithm/src/main/java/top/chenqwwq/Test.cpp
+bits/stdc++.h
 -
-queue
-/home/chen/_algorithm/src/main/java/top/chenqwwq/pat/advanced/_1017/queue
 
