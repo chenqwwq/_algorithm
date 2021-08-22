@@ -1,4 +1,4 @@
-package top.chenqwwq.basis.Dichotomy;
+package top.chenqwwq.basis.dichotomy;
 
 /**
  * 以升序数组查询

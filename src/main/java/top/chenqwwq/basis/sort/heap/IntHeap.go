@@ -34,7 +34,7 @@ package heap
 
 */
 
-// int 类型的大顶堆
+// IntHeap int 类型的大顶堆
 type IntHeap struct {
 	// 保存原始数据
 	data []int
