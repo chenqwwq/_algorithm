@@ -15,7 +15,7 @@ public class Main {
 	static Map<Integer, Set<Integer>> map = new HashMap<>();
 
 	private static void addNode(int i, int j) {
-		final Set<Integer> orDefault = map.getOrDefault(i, new HashSet<>(n - 1));
+		final Set<Integer> orDefault = map.getOrDefault(i, new HashSet<>(n - 2));
 		orDefault.add(j);
 		map.put(i, orDefault);
 	}
