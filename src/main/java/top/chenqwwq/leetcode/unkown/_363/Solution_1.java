@@ -1,4 +1,4 @@
-package top.chenqwwq.leetcode.topic.unkown._363;
+package top.chenqwwq.leetcode.unkown._363;
 
 /**
  * @author chen

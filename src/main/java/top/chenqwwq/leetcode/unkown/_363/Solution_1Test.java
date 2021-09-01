@@ -1,9 +1,7 @@
-package top.chenqwwq.leetcode.topic.unkown._363;
+package top.chenqwwq.leetcode.unkown._363;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author chen

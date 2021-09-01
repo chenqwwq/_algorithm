@@ -16,12 +16,16 @@ public class Solution {
 		int ans = 0;
 		for (int i = 0; i < n; i++) {
 			while (!stack.isEmpty() && height[stack.peek()] < height[i]) {
-				final Integer pre = stack.pop();
-				ans += 
+				final Integer low = stack.pop();
+				if (stack.isEmpty()) {
+					break;
+				}
+				final Integer high = stack.peek();
+				ans += (Math.min(height[high], height[i]) - height[low]) * (i - high - 1);
 			}
 			stack.push(i);
 		}
-
+		return ans;
 	}
 //	public int trap(int[] height) {
 //		final int n = height.length;
