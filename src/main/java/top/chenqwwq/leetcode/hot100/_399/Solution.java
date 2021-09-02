@@ -3,14 +3,6 @@ package top.chenqwwq.leetcode.hot100._399;
 import java.util.*;
 
 /**
- * <p>
- * [["a","b"],["b","c"],["bc","cd"]]
- * [1.5,2.5,5.0]
- * [["a","c"],["c","b"],["bc","cd"],["cd","bc"]]
- * [["a","b"]]
- * [0.5]
- * [["a","b"],["b","a"],["a","c"],["x","y"]]
- *
  * @author chen
  * @date 2021-08-31
  **/
