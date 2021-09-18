@@ -10,5 +10,15 @@ public interface Sort {
 	 *
 	 * @param nums 对 nums 进行排序
 	 */
-	void sort(int[] nums);
+	void sortAes(int[] nums);
+
+
+	/**
+	 * 交换元素
+	 */
+	default void swap(int[] nums, int i, int j) {
+		final int tmp = nums[i];
+		nums[i] = nums[j];
+		nums[j] = tmp;
+	}
 }
