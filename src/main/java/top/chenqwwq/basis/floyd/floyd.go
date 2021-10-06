@@ -4,7 +4,7 @@ package floyd
  * @author chen
  * @date: 2021/8/25 下午10:51
  * @description:
- *
+ *   相对于 Dijkstra 算法，floyd 适用于多源的最短路径优先算法
  */
 
 // floyd

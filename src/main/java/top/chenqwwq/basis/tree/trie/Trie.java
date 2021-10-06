@@ -1,4 +1,6 @@
-package top.chenqwwq.basis.Trie;
+package top.chenqwwq.basis.tree.Trie;
+
+import java.util.Objects;
 
 /**
  * // 前缀树
@@ -33,7 +35,7 @@ public class Trie {
      * 插入单词
      */
     public void insert(String word) {
-        if (word == null || word.length() == 0) {
+        if (isEmpty(word)){
             return;
         }
         // 以当前节点为Root
@@ -48,11 +50,15 @@ public class Trie {
         curr.isEnd = true;
     }
 
+    public boolean isEmpty(String word){
+        return Objects.isNull(word) || word.length() == 0;
+    }
+
     /**
      * 查找是否存在
      */
     public boolean search(String word) {
-        if (word == null || word.length() == 0) {
+        if (isEmpty(word)){
             return false;
         }
 

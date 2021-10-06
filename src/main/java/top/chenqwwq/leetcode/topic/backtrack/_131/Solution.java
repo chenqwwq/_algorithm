@@ -1,7 +1,5 @@
 package top.chenqwwq.leetcode.topic.backtrack._131;
 
-import netscape.security.UserTarget;
-
 import java.util.ArrayList;
 import java.util.List;
 

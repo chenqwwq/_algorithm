@@ -1,7 +1,5 @@
 package top.chenqwwq.leetcode.biweek._39._2;
 
-import sun.awt.X11.XWMHints;
-
 /**
  * @author chen
  * @date 2020/11/14
