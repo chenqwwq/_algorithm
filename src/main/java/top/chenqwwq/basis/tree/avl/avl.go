@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"strconv"
 )
 
@@ -46,11 +47,50 @@ type AVL struct {
 	balanceFactor int // 平衡因子，能接受的左右子树的高度差
 }
 
+func main() {
+	// LL
+	RR := Constructor()
+	RR.Add(3)
+	fmt.Println(RR)
+	RR.Add(2)
+	fmt.Println(RR)
+	RR.Add(1)
+	fmt.Println(RR)
+
+	LL := Constructor()
+	LL.Add(1)
+	fmt.Println(LL)
+	LL.Add(2)
+	fmt.Println(LL)
+	LL.Add(3)
+	fmt.Println(LL)
+
+	LR := Constructor()
+	LR.Add(1)
+	fmt.Println(LR)
+	LR.Add(3)
+	fmt.Println(LR)
+	LR.Add(2)
+	fmt.Println(LR)
+
+	RL := Constructor()
+	RL.Add(3)
+	fmt.Println(RL)
+	RL.Add(1)
+	fmt.Println(RL)
+	RL.Add(2)
+	fmt.Println(RL)
+}
+
 func (avl *AVL) Add(val int) *node {
 	// create new node
 	newNode := newNode(val)
+	if avl.root == nil {
+		avl.root = newNode
+		return newNode
+	}
 	// add to root
-	add(avl.root, newNode)
+	avl.root = add(avl.root, newNode)
 	return newNode
 }
 
@@ -60,10 +100,11 @@ func (avl *AVL) Del(val int) *node {
 }
 
 func (avl *AVL) Contains(target int) *node {
+	return nil
 }
 
 func (avl *AVL) Find(target int) *node {
-	return find(avl.root, target)
+	return avl.root.find(target)
 }
 
 func (avl *AVL) Max() *node {
@@ -75,15 +116,15 @@ func (avl *AVL) Min() *node {
 }
 
 func Constructor() *AVL {
-	return &AVL{}
+	return &AVL{nil, 1}
 }
 
 func (avl *AVL) String() string {
-	return format(avl.root)
+	return avl.root.format()
 }
 
 func (avl *AVL) IsBalance() bool {
-	return isBalance(avl.root)
+	return avl.root.isBalance()
 }
 
 // 内部方法
@@ -103,20 +144,30 @@ func del(_node *node, target int) *node {
 			_node = nil
 		}
 	}
+	return nil
 }
 
-func find(_node *node, target int) *node {
-	if _node == nil {
+// getBalanceFactor 获取平衡因子
+// 左边节点高度减去右边节点高度的数值
+func (this *node) getBalanceFactor() int {
+	if this == nil {
+		return 0
+	}
+	return this.left.getHeight() - this.right.getHeight()
+}
+
+func (this *node) find(target int) *node {
+	if this == nil {
 		return nil
 	}
 
-	if _node.val == target {
-		return _node
+	if this.val == target {
+		return this
 	}
-	if _node.val > target {
-		return find(_node.left, target)
+	if this.val > target {
+		return this.left.find(target)
 	}
-	return find(_node.right, target)
+	return this.right.find(target)
 }
 
 func maxNode(_node *node) *node {
@@ -135,41 +186,39 @@ func minNode(_node *node) *node {
 
 func add(root, newNode *node) *node {
 	if root == nil {
-		root = newNode
-		return root
+		return newNode
 	}
 	if root.val == newNode.val {
 		return root
 	}
-	ans := root
 	if newNode.val < root.val {
-		ans = add(root.left, newNode)
-		if root.left.height-root.right.height > 1 {
-			if newNode.val == root.left.left.val {
-				rotateRR(root)
-			} else if newNode.val == root.left.right.val {
-				rotateRL(root)
+		root.left = add(root.left, newNode)
+		if !root.isBalance() {
+			if root.left.getBalanceFactor() > 0 {
+				root = root.rotateRR()
+			} else {
+				root = root.rotateLR()
 			}
 		}
 	} else {
-		ans = add(root.right, newNode)
-		if root.right.height-root.left.height > 1 {
-			if newNode.val == root.right.right.val {
-				rotateLL(root)
-			} else if newNode.val == root.right.left.val {
-				rotateLR(root)
+		root.right = add(root.right, newNode)
+		if !root.isBalance() {
+			if root.right.getBalanceFactor() < 0 {
+				root = root.rotateLL()
+			} else {
+				root = root.rotateRL()
 			}
 		}
 	}
-	root.height = max(getHeight(root.right), getHeight(root.left)) + 1
-	return ans
+	root.height = max(root.right.getHeight(), root.left.getHeight()) + 1
+	return root
 }
 
-func format(n *node) string {
-	if n == nil {
+func (this *node) format() string {
+	if this == nil {
 		return "#"
 	}
-	return strconv.Itoa(n.val) + format(n.left) + format(n.right)
+	return strconv.Itoa(this.val) + this.left.format() + this.right.format()
 }
 
 func newNode(val int) *node {
@@ -179,18 +228,18 @@ func newNode(val int) *node {
 	}
 }
 
-func isBalance(n *node) bool {
-	if n == nil {
+func (this *node) isBalance() bool {
+	if this == nil {
 		return true
 	}
-	return abs(getHeight(n.left)-getHeight(n.right)) <= 1
+	return abs(this.left.getHeight()-this.right.getHeight()) <= 1
 }
 
-func getHeight(n *node) int {
-	if n == nil {
+func (this *node) getHeight() int {
+	if this == nil {
 		return 0
 	}
-	return n.height
+	return this.height
 }
 
 func abs(a int) int {
@@ -212,45 +261,46 @@ func max(a, b int) int {
 
 // rotateRR 表示的是左左的失去平衡
 // 理解中的需要左旋的情况
-//       5
+//       5(root)
 //      / \
 //     4   t1              4
 //    / \	  --右旋->	 /   \
 //   3   t2		        3     5
 //  / \                / \   / \
 // t3  t4             t3 t4 t2  t1
-func rotateRR(root *node) *node {
+//
+func (this *node) rotateRR() *node {
 	// modify ptr
-	left := root.left
-	root.left = left.right
-	left.right = root
+	left := this.left
+	this.left = left.right
+	left.right = this
 
 	// update node's height
 	// important: 个人在这里有一个误区
 	// 高度表示的是当前节点下的子节点的层数，同个节点的左右节点的高度可能是不同的
-	root.height = max(getHeight(root.left), getHeight(root.right)) + 1
-	left.height = max(getHeight(left.left), getHeight(left.right)) + 1
+	this.height = max(this.left.getHeight(), this.right.getHeight()) + 1
+	left.height = max(left.left.getHeight(), left.right.getHeight()) + 1
 	return left
 }
 
 // rotateLL
-func rotateLL(root *node) *node {
-	right := root.right
-	root.right = right.left
-	right.left = root
-	root.height = max(getHeight(root.left), getHeight(root.right)) + 1
-	right.height = max(getHeight(right.left), getHeight(right.right)) + 1
+func (this *node) rotateLL() *node {
+	right := this.right
+	this.right = right.left
+	right.left = this
+	this.height = max(this.left.getHeight(), this.right.getHeight()) + 1
+	right.height = max(right.left.getHeight(), right.right.getHeight()) + 1
 	return right
 }
 
 // rotateLR
-func rotateLR(root *node) *node {
-	root.left = rotateLL(root.left)
-	return rotateRR(root)
+func (this *node) rotateLR() *node {
+	this.left = this.left.rotateLL()
+	return this.rotateRR()
 }
 
 // rotateRL
-func rotateRL(root *node) *node {
-	root.right = rotateRR(root.right)
-	return rotateLL(root)
+func (this *node) rotateRL() *node {
+	this.right = this.right.rotateRR()
+	return this.rotateLL()
 }
