@@ -47,39 +47,93 @@ type AVL struct {
 	balanceFactor int // 平衡因子，能接受的左右子树的高度差
 }
 
+func getTestTree() *AVL {
+	n := Constructor()
+	n.Add(5)
+	n.Add(3)
+	n.Add(7)
+	n.Add(2)
+	n.Add(4)
+	n.Add(6)
+	n.Add(8)
+	n.Add(1)
+	n.Add(9)
+	return n
+}
+
 func main() {
-	// LL
-	RR := Constructor()
-	RR.Add(3)
-	fmt.Println(RR)
-	RR.Add(2)
-	fmt.Println(RR)
-	RR.Add(1)
-	fmt.Println(RR)
-
-	LL := Constructor()
-	LL.Add(1)
-	fmt.Println(LL)
-	LL.Add(2)
-	fmt.Println(LL)
-	LL.Add(3)
-	fmt.Println(LL)
-
-	LR := Constructor()
-	LR.Add(1)
-	fmt.Println(LR)
-	LR.Add(3)
-	fmt.Println(LR)
-	LR.Add(2)
-	fmt.Println(LR)
-
-	RL := Constructor()
-	RL.Add(3)
-	fmt.Println(RL)
-	RL.Add(1)
-	fmt.Println(RL)
-	RL.Add(2)
-	fmt.Println(RL)
+	n := getTestTree()
+	fmt.Println(n)
+	contains := n.Contains(4)
+	fmt.Println(contains)
+	//n := getTestTree()
+	//fmt.Println(n)
+	//n.Del(1)
+	//fmt.Println(n)
+	//
+	//n1 := getTestTree()
+	//n1.Del(9)
+	//fmt.Println(n1)
+	//
+	//n2 := getTestTree()
+	//n2.Del(4)
+	//fmt.Println(n2)
+	//
+	//n3 := getTestTree()
+	//n3.Del(6)
+	//fmt.Println(n3)
+	//
+	//n4 := getTestTree()
+	//n4.Del(2)
+	//fmt.Println(n4)
+	//
+	//n5 := getTestTree()
+	//n5.Del(8)
+	//fmt.Println(n5)
+	//
+	//n6 := getTestTree()
+	//n6.Del(3)
+	//fmt.Println(n6)
+	//
+	//n7 := getTestTree()
+	//n7.Del(7)
+	//fmt.Println(n7)
+	//
+	//n8 := getTestTree()
+	//n8.Del(5)
+	//fmt.Println(n8)
+	//// LL
+	//RR := Constructor()
+	//RR.Add(3)
+	//fmt.Println(RR)
+	//RR.Add(2)
+	//fmt.Println(RR)
+	//RR.Add(1)
+	//fmt.Println(RR)
+	//
+	//LL := Constructor()
+	//LL.Add(1)
+	//fmt.Println(LL)
+	//LL.Add(2)
+	//fmt.Println(LL)
+	//LL.Add(3)
+	//fmt.Println(LL)
+	//
+	//LR := Constructor()
+	//LR.Add(1)
+	//fmt.Println(LR)
+	//LR.Add(3)
+	//fmt.Println(LR)
+	//LR.Add(2)
+	//fmt.Println(LR)
+	//
+	//RL := Constructor()
+	//RL.Add(3)
+	//fmt.Println(RL)
+	//RL.Add(1)
+	//fmt.Println(RL)
+	//RL.Add(2)
+	//fmt.Println(RL)
 }
 
 func (avl *AVL) Add(val int) *node {
@@ -90,17 +144,17 @@ func (avl *AVL) Add(val int) *node {
 		return newNode
 	}
 	// add to root
-	avl.root = add(avl.root, newNode)
+	avl.root = avl.root.add(newNode)
 	return newNode
 }
 
 func (avl *AVL) Del(val int) *node {
-	// TODO:
-	return nil
+	avl.root = avl.root.del(val)
+	return avl.root
 }
 
 func (avl *AVL) Contains(target int) *node {
-	return nil
+	return avl.root.contains(target)
 }
 
 func (avl *AVL) Find(target int) *node {
@@ -108,11 +162,11 @@ func (avl *AVL) Find(target int) *node {
 }
 
 func (avl *AVL) Max() *node {
-	return maxNode(avl.root)
+	return avl.root.maxNode()
 }
 
 func (avl *AVL) Min() *node {
-	return minNode(avl.root)
+	return avl.root.minNode()
 }
 
 func Constructor() *AVL {
@@ -129,22 +183,77 @@ func (avl *AVL) IsBalance() bool {
 
 // 内部方法
 
-func del(_node *node, target int) *node {
-	if _node == nil {
+func (this *node) contains(target int) *node {
+	if this == nil {
 		return nil
 	}
-	if _node.val == target {
-		if _node.left != nil && _node.right != nil {
 
-		} else if _node.left != nil {
-			_node = _node.left
-		} else if _node.right != nil {
-			_node = _node.right
+	if this.val == target {
+		return this
+	} else if this.val < target {
+		return this.right.contains(target)
+	} else {
+		return this.left.contains(target)
+	}
+
+}
+
+// del 删除节点  返回删除后的子树根节点
+func (this *node) del(target int) *node {
+	if this == nil {
+		return nil
+	}
+	// 需要删除的不是当前节点,但是删除之后高度可能发生变化
+	ret := this
+	if target < this.val {
+		this.left = this.left.del(target)
+	} else if target > this.val {
+		this.right = this.right.del(target)
+	} else if this.val == target {
+		// 需要删除的就是当前节点
+		if this.left != nil && this.right != nil {
+			// 如果左右子树都在,就找左子树的最大值或者右子树的最小值
+			// 这里选择左子树的最大值
+			// right 存在，所以 maxNode 肯定存在
+			maxNode := this.left.maxNode()
+			maxNode.left = this.left.del(maxNode.val)
+			maxNode.right = this.right
+			ret = maxNode
+		} else if this.left != nil {
+			ret = this.left
+		} else if this.right != nil {
+			ret = this.right
 		} else {
-			_node = nil
+			ret = nil
+		}
+		// 还有如果当前节点为子节点的时候
+	}
+	if ret == nil {
+		return ret
+	}
+	ret.height = max(ret.left.getHeight(), ret.right.getHeight()) + 1
+	// 判断是否需要重新平衡
+	return ret.balance()
+}
+
+// balance 平衡
+func (this *node) balance() *node {
+	if this.isBalance() {
+		return this
+	}
+	if this.getBalanceFactor() > 0 {
+		if this.left.getBalanceFactor() > 0 {
+			return this.rotateRR()
+		} else {
+			return this.rotateLR()
+		}
+	} else {
+		if this.right.getBalanceFactor() < 0 {
+			return this.rotateLL()
+		} else {
+			return this.rotateRL()
 		}
 	}
-	return nil
 }
 
 // getBalanceFactor 获取平衡因子
@@ -170,48 +279,35 @@ func (this *node) find(target int) *node {
 	return this.right.find(target)
 }
 
-func maxNode(_node *node) *node {
-	if _node == nil || _node.right == nil {
-		return _node
+func (this *node) maxNode() *node {
+	if this == nil || this.right == nil {
+		return this
 	}
-	return maxNode(_node.right)
+	return this.right.maxNode()
 }
 
-func minNode(_node *node) *node {
-	if _node == nil || _node.left == nil {
-		return _node
+func (this *node) minNode() *node {
+	if this == nil || this.left == nil {
+		return this
 	}
-	return minNode(_node.left)
+	return this.left.minNode()
 }
 
-func add(root, newNode *node) *node {
-	if root == nil {
+func (this *node) add(newNode *node) *node {
+	if this == nil {
 		return newNode
 	}
-	if root.val == newNode.val {
-		return root
+	if this.val == newNode.val {
+		return this
 	}
-	if newNode.val < root.val {
-		root.left = add(root.left, newNode)
-		if !root.isBalance() {
-			if root.left.getBalanceFactor() > 0 {
-				root = root.rotateRR()
-			} else {
-				root = root.rotateLR()
-			}
-		}
+	if newNode.val < this.val {
+		this.left = this.left.add(newNode)
 	} else {
-		root.right = add(root.right, newNode)
-		if !root.isBalance() {
-			if root.right.getBalanceFactor() < 0 {
-				root = root.rotateLL()
-			} else {
-				root = root.rotateRL()
-			}
-		}
+		this.right = this.right.add(newNode)
 	}
-	root.height = max(root.right.getHeight(), root.left.getHeight()) + 1
-	return root
+
+	this.height = max(this.right.getHeight(), this.left.getHeight()) + 1
+	return this.balance()
 }
 
 func (this *node) format() string {
