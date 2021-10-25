@@ -1,5 +1,7 @@
 package top.chenqwwq.leetcode.daily._20210428;
 
+import com.sun.webkit.dom.CSSUnknownRuleImpl;
+
 /**
  * 633. Sum of Square Numbers
  * Given a non-negative integer c, decide whether there're two integers a and b such that a2 + b2 = c.

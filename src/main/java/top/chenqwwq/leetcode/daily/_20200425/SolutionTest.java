@@ -1,5 +1,6 @@
 package top.chenqwwq.leetcode.daily._20200425;
 
+import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -18,6 +19,7 @@ class SolutionTest {
     }
 
     @Test
+    @Ignore
     void permute() {
         final List<List<Integer>> permute = solution.permute(new int[]{1, 2, 3});
     }
