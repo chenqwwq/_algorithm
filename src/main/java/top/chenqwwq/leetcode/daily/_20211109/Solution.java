@@ -11,7 +11,7 @@ import java.util.Stack;
  **/
 public class Solution {
 
-	class Pair {
+	static class Pair {
 		char c;
 		int cnt;
 
@@ -45,41 +45,62 @@ public class Solution {
 			return;
 		}
 
-		// 当前统计数字
+		// 当前统计位
 		char c = board.charAt(idx++);
 		int cnt = 1;
 
+		Pair pair = null;
+		// 尝试和栈中数组合并消除
+		// 可以消除直接进入下一个不同节点
 		if (!stack.isEmpty()) {
-			final Pair pair = stack.peek();
-			if (pair.c == c) {
-				stack.pop();
-				cnt = (pair.cnt + 1) % 3;
+			if (stack.peek().c == c) {
+				pair = stack.pop();
+				if ((cnt += pair.cnt) >= 3) {
+					while (idx < board.length() && board.charAt(idx) == c) {
+						idx++;
+					}
+					backtrace(board, idx, num, cnts, stack);
+					stack.push(pair);
+					return;
+				}
 			}
 		}
 
+		// 往后遍历找到相同的元素
 		while (idx < board.length()) {
 			final char curr = board.charAt(idx);
-			if (c == curr) {
-				cnt = (cnt + 1) % 3;
-			} else if (cnt != 0) {
-				// 填充
-				final int need = 3 - cnt;
-				if (cnts[c - 'A'] >= need) {
-					cnts[c - 'A'] -= need;
-					backtrace(board, idx, num + need, cnts, stack);
-					cnts[c - 'A'] += need;
+			if (c != curr) {
+				break;
+			}
+			// 大于三个则直接消除掉全部
+			if (++cnt >= 3) {
+				while (idx < board.length() && board.charAt(idx) == c) {
+					idx++;
 				}
-				// 跳过
-				stack.push(new Pair(c, cnt));
 				backtrace(board, idx, num, cnts, stack);
+				if (pair != null) {
+					stack.push(pair);
+				}
+				return;
 			}
 			idx++;
 		}
-		backtrace(board, idx + 1, num, cnts, stack);
-	}
 
-	public static void main(String[] args) {
-		final int minStep = new Solution().findMinStep("WWRRBBWW", "WRBRW");
-		System.out.println(minStep);
+		// 找到了不同的元素
+		// 1. 填充对应的数量
+		final int need = 3 - cnt;
+		if (cnts[c - 'A'] >= need) {
+			cnts[c - 'A'] -= need;
+			backtrace(board, idx, num + need, cnts, stack);
+			cnts[c - 'A'] += need;
+		}
+
+		// 2. 跳过不填充
+		stack.push(new Pair(c, cnt));
+		backtrace(board, idx, num, cnts, stack);
+		stack.pop();
+		if (pair != null) {
+			stack.push(pair);
+		}
 	}
 }
