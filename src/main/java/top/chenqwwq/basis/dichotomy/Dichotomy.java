@@ -8,81 +8,42 @@ package top.chenqwwq.basis.dichotomy;
  **/
 public class Dichotomy {
 
-	/**
-	 * 找到等于 target 数
-	 */
-	public int find1(int[] nums, int target) {
-		int left = 0, right = nums.length - 1;
-		while (left <= right) {
-			final int mid = (left + right) >> 1;
-		if (nums[mid] == target) {
-				return mid;
-			} else if (nums[mid] > target) {
-				right = mid - 1;
-			} else {
-				left = mid + 1;
-			}
-		}
+	public int exist(int[] nums, int target) {
 		return -1;
 	}
 
 	/**
-	 * 找到等于 target 的数,如果存在多个则返回第一个
+	 * 找到第一个大于或者等于 target 的数字的下标
 	 */
-	public int find2(int[] nums, int target) {
+	public int ceiling(int[] nums, int target) {
 		final int n = nums.length;
-		int left = 0, right = n - 1;
-		while (left <= right) {
-			final int mid = (left + right) >> 1;
-			// 因为找第一个就是最左边的数,所以相等的时候也往左边靠
-			if (nums[mid] >= target) {
-				right = mid - 1;
-			} else {
-				left = mid + 1;
-			}
-		}
-		return (left < n && nums[left] == target) ? left : -1;
-	}
-
-	/**
-	 * 找到等于 target 的数,如果存在多个则返回第一个
-	 */
-	public int find3(int[] nums, int target) {
-		final int n = nums.length;
-		int left = 0, right = n - 1;
-		while (left <= right) {
-			final int mid = (left + right) >> 1;
-			if (nums[mid] > target) {
-				right = mid - 1;
-			} else {
-				left = mid + 1;
-			}
-		}
-		return (right > 0 && nums[right] == target) ? right : -1;
-	}
-
-	/**
-	 * 找到小于 target 的数
-	 */
-	public int find4(int[] nums, int target) {
-		return -1;
-	}
-
-
-	/**
-	 * 找到比　target 大的第一个数
-	 */
-	public int find5(int[] nums, int target) {
-		final int n = nums.length;
-		int left = 0, right = n - 1;
-		while (left <= right) {
-			final int mid = (left + right) >> 1;
+		int l = 0, r = n - 1;
+		while (l <= r) {
+			final int mid = (l + r) >> 1;
 			if (nums[mid] < target) {
-				left = mid + 1;
+				l = mid + 1;
 			} else {
-				right = mid - 1;
+				r = mid - 1;
 			}
 		}
-		return left;
+		return l;
 	}
+
+	/**
+	 * 找到第一个小雨或者等于的数字
+	 */
+	public int floor(int[] nums, int target) {
+		final int n = nums.length;
+		int l = 0, r = n - 1;
+		while (l <= r) {
+			final int mid = (l + r) >> 1;
+			if (nums[mid] > target) {
+				r = mid - 1;
+			} else {
+				l = mid + 1;
+			}
+		}
+		return r;
+	}
+
 }

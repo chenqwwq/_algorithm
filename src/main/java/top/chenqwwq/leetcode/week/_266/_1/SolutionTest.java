@@ -1,8 +1,6 @@
-package top.chenqwwq.leetcode.week._262._1;
+package top.chenqwwq.leetcode.week._266._1;
 
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author chen

@@ -1,64 +1,32 @@
 package top.chenqwwq.leetcode.week._262._1;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author chen
- * @date 2021-11-19
+ * @date 2021/11/20
  **/
 public class Solution {
-	private static final char[] cs = new char[]{'a', 'e', 'i', 'o', 'u'};
-
-	public int countVowelSubstrings(String word) {
-		final int n = word.length();
-		if (n < 5) {
-			return 0;
+	public List<Integer> twoOutOfThree(int[] nums1, int[] nums2, int[] nums3) {
+		// 位运算表示存在的状态
+		short[] stats = new short[101];
+		for (int num : nums1) {
+			stats[num] |= 1;
 		}
-		int ans = 0, l = 0, r = 0;
-		int[] hash = new int[26];
-		int cnt = 0;
-		while (r < n) {
-			final char c = word.charAt(r);
-			if (!is(c)) {
-				while (l < r) {
-					final int idx = word.charAt(l) - 'a';
-					if (hash[idx] > 1 && cnt == 5) {
-						ans++;
-					}
-					if (--hash[idx] == 0) {
-						cnt--;
-					}
-					l++;
-				}
-			} else {
-				if (hash[c - 'a']++ == 0) {
-					cnt++;
-				}
-				if (cnt == 5) {
-					ans++;
-				}
-			}
-			r++;
+		for (int num : nums2) {
+			stats[num] |= 2;
 		}
-		if (cnt == 5) {
-			while (l < r) {
-				final int idx = word.charAt(l) - 'a';
-				if (--hash[idx] == 0) {
-					cnt--;
-				}
-				if (cnt == 5) {
-					ans++;
-				}
-				l++;
+		for (int num : nums3) {
+			stats[num] |= 4;
+		}
+		final List<Integer> ans = new ArrayList<>();
+		for (int i = 0; i < 101; i++) {
+			// 3 5 6 7
+			if (stats[i] >= 3 && stats[i] != 4) {
+				ans.add(i);
 			}
 		}
 		return ans;
-	}
-
-	private boolean is(char c) {
-		for (char i : cs) {
-			if (i == c) {
-				return true;
-			}
-		}
-		return false;
 	}
 }
