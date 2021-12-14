@@ -1,29 +1,35 @@
 package top.chenqwwq.leetcode.lcof2._85;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author chenbingxin
  * @date 2021/12/6
  **/
 public class Solution {
-	public int maxProduct(String[] words) {
-		// 使用 int 表示是否包含某个字符
-		final int n = words.length;
-		final int[] hash = new int[n], lens = new int[n];
-		for (int i = 0; i < n; i++) {
-			lens[i] = words[i].length();
-			for (char c : words[i].toCharArray()) {
-				hash[i] |= (1 << (c - 'a'));
-			}
-		}
 
-		int ans = 0;
-		for (int i = 0; i < n; i++) {
-			for (int j = i + 1; j < n; j++) {
-				if ((hash[i] & hash[j]) == 0) {
-					ans = Math.max(ans, lens[i] * lens[j]);
-				}
-			}
+	List<String> ans;
+
+	public List<String> generateParenthesis(int n) {
+		ans = new ArrayList<>();
+		if (n == 0) {
+			return ans;
 		}
+		backtrace(n, n , "");
 		return ans;
+	}
+
+	public void backtrace(int left, int right, String curr) {
+		if (right == 0 && left == 0) {
+			ans.add(curr);
+			return;
+		}
+		if (left > 0) {
+			backtrace(left - 1, right, curr + '(');
+		}
+		if (left < right) {
+			backtrace(left, right - 1, curr + ')');
+		}
 	}
 }
