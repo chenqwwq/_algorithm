@@ -1,7 +1,5 @@
 package top.chenqwwq.leetcode.lcof._2021._62;
 
-import com.sun.org.apache.bcel.internal.generic.RETURN;
-
 /**
  * 剑指 Offer 62. 圆圈中最后剩下的数字
  * 0,1,···,n-1这n个数字排成一个圆圈，从数字0开始，每次从这个圆圈里删除第m个数字（删除后从下一个数字开始计数）。求出这个圆圈里剩下的最后一个数字。

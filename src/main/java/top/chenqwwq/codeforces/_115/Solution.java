@@ -1,3 +1,5 @@
+package top.chenqwwq.codeforces._115;
+
 import java.util.Scanner;
 
 /**
