@@ -1,0 +1,32 @@
+"/Users/chenbingxin/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/bin/cmake" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=/Users/chenbingxin/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/ninja/mac/ninja" -G Ninja /Users/chenbingxin/_algorithm
+    -- src/CMakeCXXCompilerId.cpp will be compiled to bin/CMakeCXXCompilerId
+    -- src/Solution.cpp will be compiled to bin/Solution
+    -- src/Solution_DP.cpp will be compiled to bin/Solution_DP
+CMake Error at CMakeLists.txt:10 (add_executable):
+  add_executable cannot create target "Solution" because another target with
+  the same name already exists.  The existing target is an executable created
+  in source directory "/Users/chenbingxin/_algorithm".  See documentation for
+  policy CMP0002 for more details.
+
+
+    -- src/Solution.cpp will be compiled to bin/Solution
+    -- src/Main.cpp will be compiled to bin/Main
+CMake Error at CMakeLists.txt:10 (add_executable):
+  add_executable cannot create target "Solution" because another target with
+  the same name already exists.  The existing target is an executable created
+  in source directory "/Users/chenbingxin/_algorithm".  See documentation for
+  policy CMP0002 for more details.
+
+
+    -- src/Solution.cpp will be compiled to bin/Solution
+CMake Error at CMakeLists.txt:10 (add_executable):
+  add_executable cannot create target "Solution" because another target with
+  the same name already exists.  The existing target is an executable created
+  in source directory "/Users/chenbingxin/_algorithm".  See documentation for
+  policy CMP0002 for more details.
+
+
+    -- src/Solution.cpp will be compiled to bin/Solution
+-- Configuring incomplete, errors occurred!
+See also "/Users/chenbingxin/_algorithm/cmake-build-debug/CMakeFiles/CMakeOutput.log".
+See also "/Users/chenbingxin/_algorithm/cmake-build-debug/CMakeFiles/CMakeError.log".
