@@ -1,6 +1,5 @@
 package top.chenqwwq.leetcode.biweek._62._2;
 
-import javafx.beans.value.ObservableNumberValue;
 
 /**
  * @author: chenqwwq

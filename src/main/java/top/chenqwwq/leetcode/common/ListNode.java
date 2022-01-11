@@ -17,7 +17,7 @@ public class ListNode {
 		this.next = node;
 	}
 
-	public static ListNode build(int[] nums) {
+	public static ListNode build(int...nums) {
 		ListNode fake = new ListNode(-1), node = fake;
 		for (int num : nums) {
 			final ListNode next = new ListNode(num);
