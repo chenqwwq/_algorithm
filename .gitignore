@@ -39,3 +39,5 @@ target/classes/META-INF/
 target/generated-sources/
 .vscode
 .devcontainer
+
+cmake-build-debug
