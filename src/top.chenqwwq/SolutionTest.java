@@ -14,6 +14,7 @@ class SolutionTest {
     @Test
     void getMinShop() {
         Assertions.assertArrayEquals(new int[]{3}, solution.getMinShop(new int[]{2, 3, 4, 5}, new int[][]{
+
                 {1, 1, 1, 1},
                 {1, 2, 3, 4},
                 {3, 2, 0, 4},
