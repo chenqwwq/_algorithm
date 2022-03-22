@@ -10,53 +10,28 @@ using namespace std;
 
 class Solution {
 public:
-
-
     vector<int> platesBetweenCandles(string s, vector<vector<int>> &queries) {
-        int n = s.length();
-        vector<int> ps(n + 2, 0);
-        for (int i = 1, sum = 0; i < n + 1; ++i) {
-            if (s[i - 1] == '*') sum++;
-            ps[i] = sum;
+        int n = s.length(),m = queries.size();
+        vector<int> left(n, 0), right(n, 0), sums(n + 1, 0);
+        for (int i = 0, j = n - 1, l = -1, r = -1; i < n; ++i, --j) {
+            if (s[i] == '|') l = i;
+            if (s[j] == '|') r = j;
+            left[i] = l;
+            right[j] = r;
+            sums[i + 1] = sums[i] + (s[i] == '*' ? 1 : 0);
         }
-        ps[n + 1] = ps[n ] + 1;
 
-        int m = queries.size();
         vector<int> ans(m, 0);
         for (int i = 0; i < m; ++i) {
-            int l = queries[i][0], r = queries[i][1];
-            int ll = left(ps, l + 1, r + 1), rr = right(ps, l + 1, r + 1);
-            ans[i] = rr <= ll ? 0 : ps[rr - 1] - ps[ll];
+            int x = queries[i][0], y = queries[i][1];
+            if (right[x] != -1 && right[x] <= left[y]) ans[i] = sums[left[y]] - sums[right[x]];
         }
         return ans;
-    }
-
-    int right(vector<int> nums, int l, int r) {
-        while (l < r) {
-            int mid = (l + r + 1) >> 1;
-            if (nums[r] - nums[mid - 1] < r - mid + 1) l = mid;
-            else r = mid - 1;
-        }
-        return l;
-    }
-
-    int left(vector<int> nums, int l, int r) {
-        while (l < r) {
-            int mid = (l + r) >> 1;
-            if (nums[mid] - nums[l - 1] < mid - l + 1) r = mid;
-            else l = mid + 1;
-        }
-        return r;
     }
 };
 
 int main() {
-    string s = "*|*||||**|||||||*||*||*||**|*|*||*";
-    vector<vector<int>> nums{{2, 33},
-                             {5, 9}};
-    (new Solution)->platesBetweenCandles(s, nums);
-
-//    vector<int> v1{1, 1, 2, 3, 4, 5, 6};
-//    (new Solution)->right(v1, 0, v1.size() - 1);
-
+    vector<vector<int>> p1{{2, 5},
+                           {5, 9}};
+    (new Solution)->platesBetweenCandles("**|**|***|", p1);
 }
