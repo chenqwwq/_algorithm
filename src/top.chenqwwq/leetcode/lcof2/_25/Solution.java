@@ -1,6 +1,5 @@
 package top.chenqwwq.leetcode.lcof2._25;
 
-import sun.tools.jstack.JStack;
 import top.chenqwwq.leetcode.common.ListNode;
 
 import java.util.Stack;
