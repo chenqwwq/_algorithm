@@ -732,7 +732,7 @@ class GTEST_API_ UnitTestImpl {
   }
 
   // Adds a TestProperty to the current TestResult object when invoked in a
-  // context of a test or a test suite, or to the global property set. If the
+  // contest of a test or a test suite, or to the global property set. If the
   // result already contains a property with the same key, the value will be
   // updated.
   void RecordProperty(const TestProperty& test_property);

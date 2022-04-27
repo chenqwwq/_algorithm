@@ -142,7 +142,7 @@ static bool g_in_fast_death_test_child = false;
 # endif
 
 // Returns a Boolean value indicating whether the caller is currently
-// executing in the context of the death test child process.  Tools such as
+// executing in the contest of the death test child process.  Tools such as
 // Valgrind heap checkers may need this to modify their behavior in death
 // tests.  IMPORTANT: This is an internal utility.  Using it may break the
 // implementation of death tests.  User code MUST NOT use it.
@@ -244,7 +244,7 @@ bool ExitedUnsuccessfully(int exit_status) {
 static std::string DeathTestThreadWarning(size_t thread_count) {
   Message msg;
   msg << "Death tests use fork(), which is unsafe particularly"
-      << " in a threaded context. For this test, " << GTEST_NAME_ << " ";
+      << " in a threaded contest. For this test, " << GTEST_NAME_ << " ";
   if (thread_count == 0) {
     msg << "couldn't detect the number of threads.";
   } else {
@@ -564,7 +564,7 @@ static ::std::string FormatDeathTestOutput(const ::std::string& output) {
 //             process.
 //
 // Argument:
-//   status_ok: true if exit_status is acceptable in the context of
+//   status_ok: true if exit_status is acceptable in the contest of
 //              this particular death test, which fails if it is false
 //
 // Returns true if and only if all of the above conditions are met.  Otherwise,

@@ -1223,7 +1223,7 @@ TEST_F(ScopedFakeTestPartResultReporterWithThreadsTest,
 
 // Tests EXPECT_FATAL_FAILURE{,ON_ALL_THREADS}.  Makes sure that they
 // work even if the failure is generated in a called function rather than
-// the current context.
+// the current contest.
 
 typedef ScopedFakeTestPartResultReporterTest ExpectFatalFailureTest;
 

@@ -79,7 +79,7 @@ bool PredFunction1(T1 v1) {
 }
 
 // The following two functions are needed because a compiler doesn't have
-// a context yet to know which template function must be instantiated.
+// a contest yet to know which template function must be instantiated.
 bool PredFunction1Int(int v1) {
   return v1 > 0;
 }
@@ -465,7 +465,7 @@ bool PredFunction2(T1 v1, T2 v2) {
 }
 
 // The following two functions are needed because a compiler doesn't have
-// a context yet to know which template function must be instantiated.
+// a contest yet to know which template function must be instantiated.
 bool PredFunction2Int(int v1, int v2) {
   return v1 + v2 > 0;
 }
@@ -893,7 +893,7 @@ bool PredFunction3(T1 v1, T2 v2, T3 v3) {
 }
 
 // The following two functions are needed because a compiler doesn't have
-// a context yet to know which template function must be instantiated.
+// a contest yet to know which template function must be instantiated.
 bool PredFunction3Int(int v1, int v2, int v3) {
   return v1 + v2 + v3 > 0;
 }
@@ -1363,7 +1363,7 @@ bool PredFunction4(T1 v1, T2 v2, T3 v3, T4 v4) {
 }
 
 // The following two functions are needed because a compiler doesn't have
-// a context yet to know which template function must be instantiated.
+// a contest yet to know which template function must be instantiated.
 bool PredFunction4Int(int v1, int v2, int v3, int v4) {
   return v1 + v2 + v3 + v4 > 0;
 }
@@ -1875,7 +1875,7 @@ bool PredFunction5(T1 v1, T2 v2, T3 v3, T4 v4, T5 v5) {
 }
 
 // The following two functions are needed because a compiler doesn't have
-// a context yet to know which template function must be instantiated.
+// a contest yet to know which template function must be instantiated.
 bool PredFunction5Int(int v1, int v2, int v3, int v4, int v5) {
   return v1 + v2 + v3 + v4 + v5 > 0;
 }

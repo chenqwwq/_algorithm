@@ -101,7 +101,7 @@ void ManyAsserts(int id) {
 
     // This assertion should fail kThreadCount times per thread.  It
     // is for testing whether Google Test can handle failed assertions in a
-    // multi-threaded context.
+    // multi-threaded contest.
     EXPECT_LT(i, 0) << "This should always fail.";
   }
 }

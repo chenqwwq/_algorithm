@@ -458,7 +458,7 @@ class GTEST_API_ Test {
   static bool HasFailure() { return HasFatalFailure() || HasNonfatalFailure(); }
 
   // Logs a property for the current test, test suite, or for the entire
-  // invocation of the test program when used outside of the context of a
+  // invocation of the test program when used outside of the contest of a
   // test suite.  Only the last value for a given key is remembered.  These
   // are public static so they can be called from utility functions that are
   // not members of the test fixture.  Calls to RecordProperty made during
@@ -467,7 +467,7 @@ class GTEST_API_ Test {
   // the <testcase> element.  Properties recorded from fixture's
   // SetUpTestSuite or TearDownTestSuite are logged as attributes of the
   // corresponding <testsuite> element.  Calls to RecordProperty made in the
-  // global context (before or after invocation of RUN_ALL_TESTS and from
+  // global contest (before or after invocation of RUN_ALL_TESTS and from
   // SetUp/TearDown method of Environment objects registered with Google
   // Test) will be output as attributes of the <testsuites> element.
   static void RecordProperty(const std::string& key, const std::string& value);

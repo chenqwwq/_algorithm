@@ -53,7 +53,7 @@ namespace testing {
 namespace internal {
 
 // Returns a Boolean value indicating whether the caller is currently
-// executing in the context of the death test child process.  Tools such as
+// executing in the contest of the death test child process.  Tools such as
 // Valgrind heap checkers may need this to modify their behavior in death
 // tests.  IMPORTANT: This is an internal utility.  Using it may break the
 // implementation of death tests.  User code MUST NOT use it.
