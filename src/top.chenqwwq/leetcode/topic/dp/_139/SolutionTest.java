@@ -15,8 +15,6 @@ class SolutionTest {
 
     @Test
     void wordBreak() {
-        Assertions.assertTrue(solution.wordBreak("leetcode", Arrays.asList("leet", "code")));
-        Assertions.assertTrue(solution.wordBreak("applepenapple", Arrays.asList("apple", "pen")));
-        Assertions.assertFalse(solution.wordBreak("catsandog", Arrays.asList("cats", "dog", "sand", "and", "cat")));
+        Assertions.assertTrue(solution.wordBreak("bb", Arrays.asList("a", "b","bbb","bbbb")));
     }
 }

@@ -1,14 +1,14 @@
-package top.chenqwwq.leetcode.topic.dp._139;
+package top.chenqwwq.leetcode.topic.dp._140;
 
-import jdk.nashorn.internal.ir.debug.ClassHistogramElement;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * @author chen
- * @date 2020-11-02
+ * @author chenqwwq
+ * @date 2022/5/22
  **/
 public class Solution {
+
     class Trie {
         Trie[] child;
         boolean end;
@@ -41,22 +41,33 @@ public class Solution {
         }
     }
 
-    public boolean wordBreak(String s, List<String> wordDict) {
+    public List<String> wordBreak(String s, List<String> wordDict) {
         final int n = s.length();
-        boolean[] dp = new boolean[n];
         Trie root = new Trie();
         for (String word : wordDict) {
             root.insert(word);
         }
 
-        dp[0] = root.exist(s, 0, 0);
-        for (int i = 1; i < n; i++) {
+        List<String>[] ss = new List[n];
+        for (int i = 0; i < n; i++) {
+            ss[i] = new ArrayList<>();
+        }
+
+        for (int i = 0; i < n; i++) {
             for (int j = i; j >= 0; j--) {
+                String curr = s.substring(j, i + 1);
                 if (root.exist(s, j, i)) {
-                    dp[i] |= j <= 0 || dp[j - 1];
+                    if (j <= 0) {
+                        ss[i].add(curr);
+                    } else {
+                        for (String pre : ss[j - 1]) {
+                            ss[i].add(pre + " " + curr);
+                        }
+                    }
+
                 }
             }
         }
-        return dp[n - 1];
+        return ss[n - 1];
     }
 }
