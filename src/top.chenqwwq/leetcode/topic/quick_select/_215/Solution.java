@@ -6,10 +6,6 @@ package top.chenqwwq.leetcode.topic.quick_select._215;
  **/
 public class Solution {
     public int quickSelect(int[] nums, int k, int ll, int rr) {
-        for (int num : nums) {
-            System.out.printf("%d ", num);
-        }
-        System.out.printf("\n %d %d %d\n", ll, rr, k);
         if (ll == rr) {
             return nums[ll];
         }

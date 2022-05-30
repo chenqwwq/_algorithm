@@ -8,6 +8,7 @@
 
 using namespace std;
 
+// 素数筛
 const int maxn = 1e9;
 bool primes[maxn];
 
