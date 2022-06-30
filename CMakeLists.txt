@@ -19,6 +19,5 @@ foreach (file ${FILES})
     file(RELATIVE_PATH exe ${CMAKE_CURRENT_SOURCE_DIR} ${file}) # 获取相对路径
     string(REGEX REPLACE "/" "." exe ${exe})
     #    string(REGEX REPLACE ".+/(.+)\\..*" "\\1" exe ${file})
-    add_executable(${exe} ${file} src/top.chenqwwq/leetcode/daily/_20220623/substring-with-concatenation-of-all-words.cpp)
     message(\ \ \ \ --\ src/${exe}.cpp\ will\ be\ compiled\ to\ bin/${exe})
 endforeach ()
