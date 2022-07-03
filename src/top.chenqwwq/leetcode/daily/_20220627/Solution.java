@@ -9,7 +9,6 @@ import java.util.concurrent.CompletableFuture;
  */
 public class Solution {
     public int findLUSlength(String[] strs) {
-        HttpURLConnection
         int n = strs.length, ans = -1;
         for (int i = 0; i < n; i++) {
             if (strs[i].length() <= ans) continue;

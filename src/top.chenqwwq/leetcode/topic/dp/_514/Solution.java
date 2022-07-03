@@ -1,6 +1,7 @@
 package top.chenqwwq.leetcode.topic.dp._514;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -24,17 +25,23 @@ public class Solution {
         for (int i = 0; i < n; i++) {
             map[ring.charAt(i) - 'a'].add(i);
         }
-        int[][] dp = new int[n][m];
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
+        int[][] dp = new int[m][n];
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
                 dp[i][j] = 0x3f3f3f3f;
             }
         }
         for (int next : map[key.charAt(0) - 'a']) {
-            dp[next][0] = Math.min(dp[next][0], Math.min(next, n - next) + 1);
+            dp[0][next] = Math.min(next, n - next) + 1;
         }
         // 转到 key 的i位
         for (int i = 1; i < m; i++) {
+            for (int j : map[key.charAt(i) - 'a']) {
+                for (int k : map[key.charAt(i - 1) - 'a']) {
+                    dp[i][j] = Math.min(dp[i][j], dp[i - 1][k] + Math.min(Math.abs(j - k), n - Math.abs(j - k)) + 1);
+                }
+            }
         }
+        return Arrays.stream(dp[m - 1]).min().getAsInt();
     }
 }
