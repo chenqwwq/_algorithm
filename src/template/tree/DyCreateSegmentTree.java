@@ -11,107 +11,74 @@ import java.util.function.BiFunction;
  * @date 2022/6/6
  **/
 public class DyCreateSegmentTree {
+    /**
+     * 动态节点，不记录左右边界值
+     */
     class Node {
-        // 左右子节点
-        Node lc, rc;
-
-        // 左右边界
-        int l, r;
-
-        // 懒标记和真实数据
-        int add, data;
-
-        public Node(int l, int r) {
-            this.l = l;
-            this.r = r;
-        }
-
-        public int mid() {
-            return l + (r - l) >> 1;
-        }
+        Node lc, rc; // 左右子节点
+        int add, data; // 懒标记和真实数据
     }
 
-    public static final int MAXN = (int) 1e9;
-
+    public static final int MAXN = (int) 1e9 + 7;
     private final Node root;
     private final BiFunction<Integer, Integer, Integer> merger;
 
-    public DyCreateSegmentTree(int l, int r, BiFunction<Integer, Integer, Integer> merger) {
-        this.root = new Node(l, r);
-        this.merger = merger;
-    }
-
     public DyCreateSegmentTree(BiFunction<Integer, Integer, Integer> merger) {
-        this.root = new Node(0, MAXN);
+        this.root = new Node();
         this.merger = merger;
     }
 
     // 区间更新
 
     public void update(int l, int r, int v) {
-        update(root, l, r, v);
+        update(root, 0, MAXN, l, r, v);
     }
 
-    private void update(Node node, int l, int r, int v) {
-        if (l <= node.l && node.r <= r) {
+    private void update(Node node, int ll, int rr, int l, int r, int v) {
+        if (l <= ll && rr <= r) {
+            node.data += (rr - ll + 1) * v;
             node.add += v;
-            node.data += v;
             return;
         }
-        lazyCreate(node);
-        pushDown(node);
-        int mid = node.mid();
-        if (l <= mid) {
-            update(node.lc, l, r, v);
-        }
-        if (mid < r) {
-            update(node.rc, l, r, v);
-        }
+        int mid = ll + ((rr - ll) >> 1);
+        pushDown(node, mid - ll + 1, rr - mid);
+        if (l <= mid) update(node.lc, ll, mid, l, r, v);
+        if (r > mid) update(node.rc, mid + 1, rr, l, r, v);
         pushUp(node);
     }
 
     // 区间查询
 
     public int query(int l, int r) {
-        return query(root, l, r);
+        return query(root, 0, MAXN, l, r);
     }
 
-    private int query(Node node, int l, int r) {
-        if (l <= node.l && r >= node.r) {
+    private int query(Node node, int ll, int rr, int l, int r) {
+        if (l <= ll && r >= rr) {
             return node.data;
         }
-        pushDown(node);
-        int mid = node.mid();
+        int mid = ll + ((rr - ll) >> 1);
+        pushDown(node, mid - ll + 1, rr - mid);
         int ans = 0;
-        if (l <= mid) {
-            ans = query(node.lc, l, r);
-        }
-        if (mid < r) {
-            ans = Math.max(query(node.rc, l, r), ans);
-        }
+        if (l <= mid) ans = query(node.lc, ll, mid, l, r);
+        if (mid < r) ans = Math.max(query(node.rc, mid + 1, rr, l, r), ans);
         return ans;
     }
 
 
-    private void lazyCreate(Node node) {
-        if (node.lc == null) {
-            node.lc = new Node(node.l, node.l + (node.r - node.l) >> 1);
-        }
-        if (node.rc == null) {
-            node.rc = new Node((node.l + (node.r - node.l) >> 1) + 1, node.r);
-        }
-    }
-
-    private void pushDown(Node node) {
-        if (node == null || node.add == 0) {
-            return;
-        }
-
-        node.lc.data += node.add;
+    private void pushDown(Node node, int lc, int rc) {
+        lazyCreate(node);
+        if (node.add == 0) return;
+        node.lc.data += lc * node.add;
         node.lc.add += node.add;
-        node.rc.data += node.add;
+        node.rc.data += rc * node.add;
         node.rc.add += node.add;
         node.add = 0;
+    }
+
+    private void lazyCreate(Node node) {
+        if (node.lc == null) node.lc = new Node();
+        if (node.rc == null) node.rc = new Node();
     }
 
     private void pushUp(Node node) {
