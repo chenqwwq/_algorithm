@@ -1,4 +1,4 @@
-package template.tree;
+package template.segment_tree;
 
 import java.util.function.BiFunction;
 
@@ -67,17 +67,11 @@ public class SegmentTree {
     }
 
     public int query(int pos, int l, int r, int ll, int rr) {
-        if (l == ll && r == rr) {
-            return tree[pos];
-        }
+        if (l == ll && r == rr) return tree[pos];
         int left = leftChild(pos), right = rightChild(pos), mid = (l + r) >> 1;
-        if (rr < mid) {
-            // 在区间的左边
-            return query(left, l, mid, ll, rr);
-        }
-        if (ll > mid) {
-            return query(right, mid + 1, r, ll, rr);
-        }
+        // 在区间的左边
+        if (rr < mid) return query(left, l, mid, ll, rr);
+        if (ll > mid) return query(right, mid + 1, r, ll, rr);
         return merger.apply(query(left, l, mid, ll, rr), query(right, mid + 1, r, ll, rr));
     }
 
@@ -85,27 +79,20 @@ public class SegmentTree {
     // 单点更新通过（中层）递归找到需要修改的点，后续通过 merge 将修改传递到上层
 
     public void update(int idx, int val) {
-        if (idx < 0 || idx >= data.length) {
-            return;
-        }
+        if (idx < 0 || idx >= data.length) return;
         data[idx] = val;
         update(0, 0, cap - 1, idx, val);
     }
 
     public void update(int u, int l, int r, int idx, int v) {
-        if (r < idx || l > idx) {
-            return;
-        }
+        if (r < idx || l > idx) return;
         if (l == r) {
             tree[l] = v;
             return;
         }
         int left = leftChild(u), right = rightChild(u), mid = (l + r) >> 1;
-        if (idx > mid) {
-            update(right, mid + 1, r, idx, v);
-        } else {
-            update(left, l, mid, idx, v);
-        }
+        if (idx > mid) update(right, mid + 1, r, idx, v);
+        else update(left, l, mid, idx, v);
         tree[u] = merger.apply(tree[left], tree[right]);
     }
 
@@ -149,12 +136,8 @@ public class SegmentTree {
 
         // l ~ mid 中包含部分需要更新的元素
         int mid = (l + r) >> 1;
-        if (ll <= mid) {
-            lazyUpdate(u << 1, l, mid, ll, rr, v);
-        }
-        if (mid < r) {
-            lazyUpdate(u << 1 | 1, mid + 1, r, ll, rr, v);
-        }
+        if (ll <= mid) lazyUpdate(u << 1, l, mid, ll, rr, v);
+        if (mid < r) lazyUpdate(u << 1 | 1, mid + 1, r, ll, rr, v);
         pushUp(u);
     }
 
@@ -166,12 +149,8 @@ public class SegmentTree {
 
         int mid = (l + r) >> 1;
         int ans = 0;
-        if (ll <= mid) {
-            ans += lazyQuery(u, l, mid, ll, rr);
-        }
-        if (mid < rr) {
-            ans += lazyQuery(u, mid + 1, r, ll, rr);
-        }
+        if (ll <= mid) ans += lazyQuery(u, l, mid, ll, rr);
+        if (mid < rr) ans += lazyQuery(u, mid + 1, r, ll, rr);
         return ans;
     }
 
@@ -184,9 +163,7 @@ public class SegmentTree {
      * <p>
      */
     private void pushDown(int u, int l, int r) {
-        if (lazy[u] <= 0) {
-            return;
-        }
+        if (lazy[u] <= 0) return;
         lazy[u << 1] += lazy[u];
         lazy[u << 1 | 1] += lazy[u];
 

@@ -1,4 +1,4 @@
-package template.tree;
+package template.segment_tree;
 
 import java.util.function.BiFunction;
 

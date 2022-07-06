@@ -1,7 +1,5 @@
 package top.chenqwwq.leetcode.daily._20220606;
 
-import template.tree.DyCreateSegmentTree;
-
 import java.util.function.BiFunction;
 
 /**
