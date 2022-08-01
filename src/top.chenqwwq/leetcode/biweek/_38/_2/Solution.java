@@ -1,6 +1,7 @@
 package top.chenqwwq.leetcode.biweek._38._2;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 /**
  * @author chen
@@ -8,19 +9,12 @@ import java.util.Arrays;
  **/
 public class Solution {
     public int maxWidthOfVerticalArea(int[][] points) {
-        if (points == null || points.length == 0) {
-            return 0;
-        }
-        int[] arr = new int[points.length];
-        for (int i = 0; i < points.length; i++) {
-            arr[i] = points[i][0];
-        }
-        Arrays.sort(arr);
+        final int n = points.length;
+        Arrays.sort(points, Comparator.comparingInt(o -> o[0]));
         int ans = 0;
-        for (int i = 1; i < arr.length; i++) {
-            ans = Math.max(ans, arr[i] - arr[i - 1]);
+        for (int i = 1; i < n; i++) {
+            ans = Math.max(ans, points[i][0] - points[i - 1][0]);
         }
-
         return ans;
     }
 }
