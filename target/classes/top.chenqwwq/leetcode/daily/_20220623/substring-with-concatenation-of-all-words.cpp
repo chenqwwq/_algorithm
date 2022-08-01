@@ -4,7 +4,7 @@
 // Created by 沽酒 on 2022/6/23.
 //
 
-#include "stdc++.h"
+#include "bits/stdc++.h"
 #include "common.h"
 
 using namespace std;

@@ -2,7 +2,7 @@
 // Created by 陈炳鑫 on 2022/2/19.
 //
 
-#include "stdc++.h"
+#include "bits/stdc++.h"
 #include "common.h"
 
 using namespace std;

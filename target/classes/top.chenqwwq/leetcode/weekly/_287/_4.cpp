@@ -3,7 +3,7 @@
 //
 
 
-#include "stdc++.h"
+#include "bits/bits/stdc++.h"
 #include "common.h"
 
 using namespace std;

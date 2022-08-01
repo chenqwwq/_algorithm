@@ -32,6 +32,7 @@
 
 // 17.4.1.2 Headers
 
+#include "common.h"
 // C
 #ifndef _GLIBCXX_NO_ASSERT
 #include <cassert>
