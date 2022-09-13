@@ -67,7 +67,7 @@ public class SegmentTree {
     }
 
     public int query(int pos, int l, int r, int ll, int rr) {
-        if (l == ll && r == rr) return tree[pos];
+        if (l >= ll && r <= rr) return tree[pos];
         int left = leftChild(pos), right = rightChild(pos), mid = (l + r) >> 1;
         // 在区间的左边
         if (rr < mid) return query(left, l, mid, ll, rr);
