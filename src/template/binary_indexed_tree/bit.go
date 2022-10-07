@@ -14,13 +14,13 @@ package main
 // 第i个节点，如果i是奇数则只保存当前节点的值，例如 i=5 时，只保存 nums[5] 的值，翻成二进制末位为1
 //
 
-type BinaryIndexedTree struct {
+type Fenwick struct {
 	data     []int
 	capacity int
 }
 
-// Init 初始化 BinaryIndexedTree
-func (bit *BinaryIndexedTree) Init(nums []int) {
+// Init 初始化 Fenwick
+func (bit *Fenwick) Init(nums []int) {
 	n := len(nums)
 	bit.capacity, bit.data = n+1, make([]int, n+1)
 	for i := 0; i < n; i++ {
@@ -29,7 +29,7 @@ func (bit *BinaryIndexedTree) Init(nums []int) {
 }
 
 // Add 将 pos 处的元素新增 val
-func (bit *BinaryIndexedTree) Add(pos, val int) bool {
+func (bit *Fenwick) Add(pos, val int) bool {
 	if pos >= bit.capacity {
 		return false
 	}
@@ -41,12 +41,12 @@ func (bit *BinaryIndexedTree) Add(pos, val int) bool {
 }
 
 // Update 将 pos 处的元素更新为 val
-func (bit *BinaryIndexedTree) Update(pos, val int) bool {
+func (bit *Fenwick) Update(pos, val int) bool {
 	return bit.Add(pos+1, val-bit.data[pos+1])
 }
 
 // Sum 获取前缀和
-func (bit *BinaryIndexedTree) Sum(pos int) int {
+func (bit *Fenwick) Sum(pos int) int {
 	ans := 0
 	for pos >= 1 {
 		ans += bit.data[pos]
@@ -56,7 +56,7 @@ func (bit *BinaryIndexedTree) Sum(pos int) int {
 }
 
 // Range 获取范围值
-func (bit *BinaryIndexedTree) Range(l, r int) int {
+func (bit *Fenwick) Range(l, r int) int {
 	return bit.Sum(r+1) - bit.Sum(l)
 }
 

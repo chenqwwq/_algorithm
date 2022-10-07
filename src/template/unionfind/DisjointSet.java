@@ -1,4 +1,4 @@
-package top.chenqwwq.basis.unionfind;
+package template.unionfind;
 
 import java.util.Arrays;
 
@@ -20,11 +20,8 @@ public class DisjointSet {
     }
 
     public int root(int n) {
-        // 找到x节点的根节点
         int node = n;
-        while (tree[node] != -1) {
-            node = tree[node];
-        }
+        while (tree[node] != -1) node = tree[node];
         return node;
     }
 
