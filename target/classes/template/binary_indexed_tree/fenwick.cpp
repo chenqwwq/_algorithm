@@ -11,7 +11,7 @@ using namespace std;
 /**
  * 树状数组
  */
-class BinaryIndexedTree {
+class fenwick {
 private:
     vector<int> tree;
     int n;
@@ -21,7 +21,7 @@ private:
     }
 
 public:
-    BinaryIndexedTree(vector<int> &ds) {
+    fenwick(vector<int> &ds) {
         n = (int) ds.size();
         tree.resize(n + 1);
         for (int i = 0; i < n; ++i) add(i + 1, ds[i]);
