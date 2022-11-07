@@ -1,6 +1,5 @@
 package top.chenqwwq.leetcode.daily._20220731;
 
-import com.sun.org.apache.xerces.internal.parsers.IntegratedParserConfiguration;
 import top.chenqwwq.leetcode.common.TreeNode;
 
 import java.util.HashMap;

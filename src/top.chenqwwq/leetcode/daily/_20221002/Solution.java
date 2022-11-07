@@ -1,7 +1,5 @@
 package top.chenqwwq.leetcode.daily._20221002;
 
-import sun.font.CreatedFontTracker;
-
 /**
  * @author chenqwwq
  * @date 2022/10/2

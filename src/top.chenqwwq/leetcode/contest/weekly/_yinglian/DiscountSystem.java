@@ -59,12 +59,4 @@ public class DiscountSystem {
         }
         return cost;
     }
-
-    public static void main(String[] args) {
-        DiscountSystem ds = new DiscountSystem();
-        ds.addActivity(1,15,5,7,2);
-        System.out.println(ds.consume(101,16));
-        ds.removeActivity(1);
-        System.out.println(ds.consume(101,19));
-    }
 }

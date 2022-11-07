@@ -1,7 +1,5 @@
 package top.chenqwwq.leetcode.daily._20220703;
 
-import com.sun.org.apache.xerces.internal.parsers.IntegratedParserConfiguration;
-
 import java.util.ArrayList;
 import java.util.List;
 

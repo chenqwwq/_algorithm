@@ -1,10 +1,7 @@
 package top.chenqwwq.leetcode.daily._20220716;
 
-import sun.awt.image.ImageWatched;
-
 import java.util.Deque;
 import java.util.LinkedList;
-import java.util.Queue;
 
 /**
  * @author chenqwwq

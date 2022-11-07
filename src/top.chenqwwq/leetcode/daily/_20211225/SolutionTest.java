@@ -3,11 +3,6 @@ package top.chenqwwq.leetcode.daily._20211225;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import top.chenqwwq.leetcode.common.TreeNode;
-import top.chenqwwq.leetcode.daily._20211225.Solution;
-
-import javax.xml.soap.SOAPMessage;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author chenbingxin
