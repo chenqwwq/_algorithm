@@ -1,13 +1,16 @@
 package top.chenqwwq.leetcode.daily._20221107;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author chenqwwq
  * @date 2022/11/7
  **/
 public class Solution {
+
     String s;
     int n;
 
@@ -32,9 +35,9 @@ public class Solution {
         if (i == j) return List.of(String.valueOf(s.charAt(i)));
         List<String> rd = new ArrayList<>();
         for (int p = i; p <= j; p++) {
-            String s1 = s.substring(i, p+1), s2 = s.substring(p+1, j+1);
+            String s1 = s.substring(i, p + 1), s2 = s.substring(p + 1, j + 1);
             if (check(s1) && check2(s2)) {
-                if(s1.equals("0") && s2.equals("0")) continue;
+                if (s1.equals("0") && s2.equals("0")) continue;
                 rd.add(s1 + (!s1.isBlank() && !s2.isBlank() ? "." : "") + s2);
             }
         }
@@ -46,6 +49,6 @@ public class Solution {
     }
 
     private boolean check2(String s) {
-         return !s.endsWith("0");
+        return !s.endsWith("0");
     }
 }
