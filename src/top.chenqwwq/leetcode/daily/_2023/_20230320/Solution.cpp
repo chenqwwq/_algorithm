@@ -1,5 +1,5 @@
 //
-// Created by chenqwwq on 2023/1/1.
+// Created by chenqwwq on 2023/3/20.
 //
 
 
@@ -9,10 +9,9 @@
 typedef long long ll;
 
 using namespace std;
-
 class Solution {
 public:
-    int minMovesToSeat(vector<int>& seats, vector<int>& students) {
+    int numDupDigitsAtMostN(int n) {
 
     }
 };
