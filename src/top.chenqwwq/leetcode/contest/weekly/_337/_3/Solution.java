@@ -1,4 +1,4 @@
-package top.chenqwwq.leetcode.contest.weekly._337._3;
+package top.chenqwwq.leetcode.contest.weekly._337;
 
 import java.util.Arrays;
 import java.util.Map;
