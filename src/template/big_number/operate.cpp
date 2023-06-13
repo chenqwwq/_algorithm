@@ -24,7 +24,3 @@ string add(string &a, string &b) {
     reverse(ans.begin(), ans.end());
     return ans;
 }
-
-int main(){
-    printf("hello");
-}

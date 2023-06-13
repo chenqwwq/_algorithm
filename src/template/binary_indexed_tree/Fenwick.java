@@ -9,7 +9,6 @@ public class Fenwick {
     private final int[] tree;
     private final int cap;
 
-
     public Fenwick(int cap) {
         this.cap = cap;
         tree = new int[cap];
