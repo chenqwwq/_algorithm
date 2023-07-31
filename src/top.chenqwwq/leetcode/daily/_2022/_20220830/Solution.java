@@ -1,4 +1,4 @@
-package top.chenqwwq.leetcode.daily._20220830;
+package top.chenqwwq.leetcode.daily._2022._20220830;
 
 import top.chenqwwq.leetcode.common.TreeNode;
 

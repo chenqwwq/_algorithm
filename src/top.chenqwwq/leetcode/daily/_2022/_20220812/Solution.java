@@ -1,4 +1,4 @@
-package top.chenqwwq.leetcode.daily._20220812;
+package top.chenqwwq.leetcode.daily._2022._20220812;
 
 import java.util.ArrayList;
 import java.util.HashMap;
