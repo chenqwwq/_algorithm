@@ -2,17 +2,18 @@ package top.chenqwwq.leetcode.contest.weekly._367._1;
 
 /**
  * @author chenqwwq
- * @date 2023/8/6
+ * @date 2023/10/15
  **/
 public class Solution {
-    public String finalString(String s) {
-        final int n = s.length();
-        StringBuilder sb = new StringBuilder();
+    public int[] findIndices(int[] nums, int indexDifference, int valueDifference) {
+        final int n = nums.length;
         for (int i = 0; i < n; i++) {
-            final char c = s.charAt(i);
-            if(c != 'i') sb.append(c);
-            else sb.reverse();
+            for (int j = i + indexDifference; j < n; j++) {
+                if (Math.abs(nums[j] - nums[i]) >= valueDifference) {
+                    return new int[]{i, j};
+                }
+            }
         }
-        return sb.toString();
+        return new int[]{-1, -1};
     }
 }

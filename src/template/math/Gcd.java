@@ -4,7 +4,7 @@ import javax.xml.crypto.dsig.spec.XSLTTransformParameterSpec;
 import java.lang.ref.SoftReference;
 
 /**
- * 求最大公约数
+ * 最大公约数
  *
  * @author chen
  * @date 2022-02-10
@@ -14,6 +14,7 @@ public class Gcd {
     /**
      * 穷举法
      */
+    @Deprecated
     public static int gcd_exhaustively(int a, int b) {
         for (int i = 2; i < Math.min(a, b); i++) {
             if (a % i == 0 && b % i == 0) {

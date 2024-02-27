@@ -1,33 +1,26 @@
 package top.chenqwwq.leetcode.contest.weekly._367._2;
 
-import java.util.Arrays;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author chenqwwq
- * @date 2023/8/6
+ * @date 2023/10/15
  **/
 public class Solution {
-    public boolean canSplitArray(List<Integer> nums, int m) {
-        final int n = nums.size();
-        if (n <= 2) return true;
-
-        int sum = 0;
-        for (int num : nums) sum += num;
-        return f(nums, sum, m, 0, n - 1);
-    }
-
-    Map<Integer,Boolean> memo = new HashMap<>();
-
-    public boolean f(List<Integer> nums, int sum, int m, int l, int r) {
-        if(r == l) return true;
-        if (r < l || (sum < m && r - l > 0)) return false;
-        int flag = l << 16 | r;
-        if(memo.containsKey(flag)) return memo.get(flag);
-        final boolean res = f(nums, sum - nums.get(l), m, l + 1, r) || f(nums, sum - nums.get(r), m, l, r - 1);
-        memo.put(flag,res);
-        return res;
+    public String shortestBeautifulSubstring(String s, int k) {
+        final int n = s.length();
+        List<String> ss = new ArrayList<>();
+        int cnt = 0, l = 0, r = -1;
+        while (++r < n) {
+            cnt += s.charAt(r) - '0';
+            while (cnt > k || (l < n  && s.charAt(l) == '0')) cnt -= s.charAt(l++) - '0';
+            if (cnt == k) ss.add(s.substring(l, r + 1));
+        }
+        if (ss.isEmpty()) return "";
+        ss.sort(Comparator.comparingInt(String::length).thenComparing(String::compareTo));
+        return ss.get(0);
     }
 }

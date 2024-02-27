@@ -1,6 +1,8 @@
 package template.math;
 
 /**
+ * 快速幂（快速求 base ^ n
+ *
  * @author 沽酒
  * @since 2023/06/13
  */
@@ -17,11 +19,5 @@ public class Qpow {
         return (n & 1) == 1
                 ? pow(base * base, n >> 1)
                 : base * pow(base * base, n >> 1);
-    }
-
-    public static void main(String[] args) {
-        final Qpow qp = new Qpow();
-
-        System.out.println(qp.pow(2,4));
     }
 }
