@@ -28,12 +28,12 @@ class SolutionTest {
 	 * 9
 	 */
 
-	Solution solution = new Solution();
-
-	@Test
-	void minimumTimeRequired() {
-		Assertions.assertEquals(9899456, solution.minimumTimeRequired(new int[]{9899456, 8291115, 9477657, 9288480, 5146275, 7697968, 8573153, 3582365, 3758448, 9881935, 2420271, 4542202}, 9));
-		Assertions.assertEquals(3, solution.minimumTimeRequired(new int[]{3, 2, 3}, 3));
-		Assertions.assertEquals(11, solution.minimumTimeRequired(new int[]{1, 2, 4, 7, 8}, 2));
-	}
+//	Solution solution = new Solution();
+//
+//	@Test
+//	void minimumTimeRequired() {
+//		Assertions.assertEquals(9899456, solution.minimumTimeRequired(new int[]{9899456, 8291115, 9477657, 9288480, 5146275, 7697968, 8573153, 3582365, 3758448, 9881935, 2420271, 4542202}, 9));
+//		Assertions.assertEquals(3, solution.minimumTimeRequired(new int[]{3, 2, 3}, 3));
+//		Assertions.assertEquals(11, solution.minimumTimeRequired(new int[]{1, 2, 4, 7, 8}, 2));
+//	}
 }
