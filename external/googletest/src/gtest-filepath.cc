@@ -185,7 +185,7 @@ FilePath FilePath::MakeFileName(const FilePath& directory,
   if (number == 0) {
     file = base_name.string() + "." + extension;
   } else {
-    file = base_name.string() + "_" + StreamableToString(number)
+    file = base_name.string() + "_3" + StreamableToString(number)
         + "." + extension;
   }
   return ConcatPaths(directory, FilePath(file));

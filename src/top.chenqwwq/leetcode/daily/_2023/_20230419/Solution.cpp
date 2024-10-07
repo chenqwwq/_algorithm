@@ -20,8 +20,8 @@ public:
         for (int i = 0; i < n; i++) dp[i][i] = arr[i];
 
         for (int j = 1; j < n; j++) {
-            // j > i
-            for (int i = j - 1; i >= 0; i--) {
+           // j > i
+           for (int i = j - 1; i >= 0; i--) {
                 int len = j - i + 1;
                 if (len <= k) {
                     int pre = dp[i][j - 1] / (len - 1);

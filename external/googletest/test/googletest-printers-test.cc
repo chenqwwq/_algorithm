@@ -305,7 +305,7 @@ TEST(PrintEnumTest, AnonymousEnum) {
 }
 
 TEST(PrintEnumTest, EnumWithoutPrinter) {
-  EXPECT_EQ("-2", Print(kEWP1));
+  EXPECT_EQ("_2", Print(kEWP1));
   EXPECT_EQ("42", Print(kEWP2));
 }
 
@@ -445,7 +445,7 @@ TEST(PrintBuiltInTypeTest, Size_t) {
   EXPECT_EQ("1", Print(sizeof('a')));  // size_t.
 #if !GTEST_OS_WINDOWS
   // Windows has no ssize_t type.
-  EXPECT_EQ("-2", Print(static_cast<ssize_t>(-2)));  // ssize_t.
+  EXPECT_EQ("_2", Print(static_cast<ssize_t>(-2)));  // ssize_t.
 #endif  // !GTEST_OS_WINDOWS
 }
 
@@ -470,7 +470,7 @@ TEST(PrintBuiltInTypeTest, Int128) {
 // Floating-points.
 TEST(PrintBuiltInTypeTest, FloatingPoints) {
   EXPECT_EQ("1.5", Print(1.5f));   // float
-  EXPECT_EQ("-2.5", Print(-2.5));  // double
+  EXPECT_EQ("_2.5", Print(-2.5));  // double
 }
 
 #if GTEST_HAS_RTTI
@@ -1242,7 +1242,7 @@ TEST(PrintStdTupleTest, VariousSizes) {
                const char*, void*, std::string>
       t10(false, 'a', static_cast<short>(3), 4, 5, 1.5F, -2.5, str,  // NOLINT
           nullptr, "10");
-  EXPECT_EQ("(false, 'a' (97, 0x61), 3, 4, 5, 1.5, -2.5, " + PrintPointer(str) +
+  EXPECT_EQ("(false, 'a' (97, 0x61), 3, 4, 5, 1.5, _2.5, " + PrintPointer(str) +
             " pointing to \"8\", NULL, \"10\")",
             Print(t10));
 }

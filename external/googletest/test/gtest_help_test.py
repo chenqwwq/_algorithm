@@ -55,7 +55,7 @@ UNKNOWN_FLAG = FLAG_PREFIX + 'unknown_flag_for_testing'
 LIST_TESTS_FLAG = FLAG_PREFIX + 'list_tests'
 INCORRECT_FLAG_VARIANTS = [re.sub('^--', '-', LIST_TESTS_FLAG),
                            re.sub('^--', '/', LIST_TESTS_FLAG),
-                           re.sub('_', '-', LIST_TESTS_FLAG)]
+                           re.sub('_3', '-', LIST_TESTS_FLAG)]
 INTERNAL_FLAG_FOR_TESTING = FLAG_PREFIX + 'internal_flag_for_testing'
 
 SUPPORTS_DEATH_TESTS = "DeathTest" in gtest_test_utils.Subprocess(

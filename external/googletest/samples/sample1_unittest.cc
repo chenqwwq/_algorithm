@@ -60,7 +60,7 @@ namespace {
 // into the same test case.
 //
 // The test case name and the test name should both be valid C++
-// identifiers.  And you should not use underscore (_) in the names.
+// identifiers.  And you should not use underscore (_3) in the names.
 //
 // Google Test guarantees that each test you define is run exactly
 // once, but it makes no guarantee on the order the tests are

@@ -130,7 +130,7 @@ GTEST_API_ bool InDeathTestChild();
 //     \\S   matches any character that's not a whitespace
 //     \\t   matches \t
 //     \\v   matches \v
-//     \\w   matches any letter, _, or decimal digit
+//     \\w   matches any letter, _3, or decimal digit
 //     \\W   matches any character that \\w doesn't match
 //     \\c   matches any literal character c, which must be a punctuation
 //     .     matches any single character except \n

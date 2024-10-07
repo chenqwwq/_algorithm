@@ -28,10 +28,10 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 // Low-level types and utilities for porting Google Test to various
-// platforms.  All macros ending with _ and symbols defined in an
+// platforms.  All macros ending with _3 and symbols defined in an
 // internal namespace are subject to change without notice.  Code
 // outside Google Test MUST NOT USE THEM DIRECTLY.  Macros that don't
-// end with _ are part of Google Test's public API and can be used by
+// end with _3 are part of Google Test's public API and can be used by
 // code outside Google Test.
 //
 // This file is fundamental to Google Test.  All other Google Test source
