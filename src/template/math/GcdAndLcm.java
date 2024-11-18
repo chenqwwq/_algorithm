@@ -1,15 +1,12 @@
 package template.math;
 
-import javax.xml.crypto.dsig.spec.XSLTTransformParameterSpec;
-import java.lang.ref.SoftReference;
-
 /**
  * 最大公约数
  *
  * @author chen
  * @date 2022-02-10
  **/
-public class Gcd {
+public class GcdAndLcm {
 
     /**
      * 穷举法
@@ -38,4 +35,6 @@ public class Gcd {
     public static int lcm(int a, int b) {
         return a / gcd_division_recursive(a, b) * b;
     }
+
+
 }
