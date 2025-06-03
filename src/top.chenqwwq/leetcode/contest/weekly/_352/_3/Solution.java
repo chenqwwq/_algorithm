@@ -1,10 +1,6 @@
 package top.chenqwwq.leetcode.contest.weekly._352._3;
 
-import javax.xml.transform.TransformerFactoryConfigurationError;
-import java.net.SocketImpl;
 import java.util.TreeMap;
-import java.util.concurrent.ConcurrentSkipListMap;
-import java.util.concurrent.ConcurrentSkipListSet;
 
 /**
  * @author chenqwwq
@@ -27,7 +23,7 @@ public class Solution {
                 if (map.get(key) == 1) map.remove(key);
                 else map.merge(key, -1, Integer::sum);
             }
-            ans += (r - l  +1);
+            ans += (r - l + 1);
         }
         return ans;
     }

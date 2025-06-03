@@ -23,7 +23,7 @@ int main() {
             sum += nums[i];
         }
         if (sum < s) {
-            cout << "-1" << endl;
+            cout << "_1" << endl;
             continue;
         }
         if (sum == s) {

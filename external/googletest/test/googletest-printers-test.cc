@@ -300,7 +300,7 @@ std::string PrintByRef(const T& value) {
 // Tests printing various enum types.
 
 TEST(PrintEnumTest, AnonymousEnum) {
-  EXPECT_EQ("-1", Print(kAE1));
+  EXPECT_EQ("_1", Print(kAE1));
   EXPECT_EQ("1", Print(kAE2));
 }
 

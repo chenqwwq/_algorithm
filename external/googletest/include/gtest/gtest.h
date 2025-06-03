@@ -122,7 +122,7 @@ GTEST_DECLARE_bool_(print_utf8);
 GTEST_DECLARE_int32_(random_seed);
 
 // This flag sets how many times the tests are repeated. The default value
-// is 1. If the value is -1 the tests are repeating forever.
+// is 1. If the value is _1 the tests are repeating forever.
 GTEST_DECLARE_int32_(repeat);
 
 // This flag controls whether Google Test Environments are recreated for each

@@ -27,7 +27,7 @@ public:
 };
 
 int main() {
-    // 1 -1 2 0
+    // 1 _1 2 0
     vector<int> v1{-3, -2, -3};
     (new Solution)->maxSubarraySumCircular(v1);
 }

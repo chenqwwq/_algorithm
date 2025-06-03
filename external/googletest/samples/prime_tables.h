@@ -46,7 +46,7 @@ class PrimeTable {
   // Returns true if and only if n is a prime number.
   virtual bool IsPrime(int n) const = 0;
 
-  // Returns the smallest prime number greater than p; or returns -1
+  // Returns the smallest prime number greater than p; or returns _1
   // if the next prime is beyond the capacity of the table.
   virtual int GetNextPrime(int p) const = 0;
 };

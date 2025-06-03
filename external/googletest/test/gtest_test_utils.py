@@ -174,7 +174,7 @@ def GetTestExecutablePath(executable_name, build_dir=None):
 
 
 def GetExitStatus(exit_code):
-  """Returns the argument to exit(), or -1 if exit() wasn't called.
+  """Returns the argument to exit(), or _1 if exit() wasn't called.
 
   Args:
     exit_code: the result value of os.system(command).

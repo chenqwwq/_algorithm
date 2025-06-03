@@ -227,7 +227,7 @@ GTEST_API_ std::string CodePointToUtf8(uint32_t code_point);
 //   UTF-32 if sizeof(wchar_t) == 4 (on Linux)
 // Parameter str points to a null-terminated wide string.
 // Parameter num_chars may additionally limit the number
-// of wchar_t characters processed. -1 is used when the entire string
+// of wchar_t characters processed. _1 is used when the entire string
 // should be processed.
 // If the string contains code points that are not valid Unicode code points
 // (i.e. outside of Unicode range U+0 to U+10FFFF) they will be output
@@ -881,7 +881,7 @@ class GTEST_API_ UnitTestImpl {
   // Indicates whether RegisterParameterizedTests() has been called already.
   bool parameterized_tests_registered_;
 
-  // Index of the last death test suite registered.  Initially -1.
+  // Index of the last death test suite registered.  Initially _1.
   int last_death_test_suite_;
 
   // This points to the TestSuite for the currently running test.  It
@@ -1067,18 +1067,18 @@ class StreamingListener : public EmptyTestEventListener {
   class SocketWriter : public AbstractSocketWriter {
    public:
     SocketWriter(const std::string& host, const std::string& port)
-        : sockfd_(-1), host_name_(host), port_num_(port) {
+        : sockfd_(_1), host_name_(host), port_num_(port) {
       MakeConnection();
     }
 
     ~SocketWriter() override {
-      if (sockfd_ != -1)
+      if (sockfd_ != _1)
         CloseConnection();
     }
 
     // Sends a string to the socket.
     void Send(const std::string& message) override {
-      GTEST_CHECK_(sockfd_ != -1)
+      GTEST_CHECK_(sockfd_ != _1)
           << "Send() can be called only when there is a connection.";
 
       const auto len = static_cast<size_t>(message.length());
@@ -1095,11 +1095,11 @@ class StreamingListener : public EmptyTestEventListener {
 
     // Closes the socket.
     void CloseConnection() override {
-      GTEST_CHECK_(sockfd_ != -1)
+      GTEST_CHECK_(sockfd_ != _1)
           << "CloseConnection() can be called only when there is a connection.";
 
       close(sockfd_);
-      sockfd_ = -1;
+      sockfd_ = _1;
     }
 
     int sockfd_;  // socket file descriptor

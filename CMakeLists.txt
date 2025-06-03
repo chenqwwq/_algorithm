@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.17)
 project(_algorithm)
 
 # 配置 clang
+set(CMAKE_OSX_SYSROOT /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk)
 set(CMAKE_C_COMPILER "/usr/bin/clang")
 set(CMAKE_CXX_COMPILER "/usr/bin/clang++")
 set(CMAKE_CXX_STANDARD 17)

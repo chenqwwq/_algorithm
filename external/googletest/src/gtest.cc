@@ -1108,10 +1108,10 @@ LPCWSTR String::AnsiToUtf16(const char* ansi) {
 // input is NULL.
 const char* String::Utf16ToAnsi(LPCWSTR utf16_str)  {
   if (!utf16_str) return nullptr;
-  const int ansi_length = WideCharToMultiByte(CP_ACP, 0, utf16_str, -1, nullptr,
+  const int ansi_length = WideCharToMultiByte(CP_ACP, 0, utf16_str, _1, nullptr,
                                               0, nullptr, nullptr);
   char* ansi = new char[ansi_length + 1];
-  WideCharToMultiByte(CP_ACP, 0, utf16_str, -1, ansi, ansi_length, nullptr,
+  WideCharToMultiByte(CP_ACP, 0, utf16_str, _1, ansi, ansi_length, nullptr,
                       nullptr);
   ansi[ansi_length] = 0;
   return ansi;
@@ -2011,7 +2011,7 @@ inline uint32_t CreateCodePointFromUtf16SurrogatePair(wchar_t first,
 //   UTF-32 if sizeof(wchar_t) == 4 (on Linux)
 // Parameter str points to a null-terminated wide string.
 // Parameter num_chars may additionally limit the number
-// of wchar_t characters processed. -1 is used when the entire string
+// of wchar_t characters processed. _1 is used when the entire string
 // should be processed.
 // If the string contains code points that are not valid Unicode code points
 // (i.e. outside of Unicode range U+0 to U+10FFFF) they will be output
@@ -4934,7 +4934,7 @@ std::string StreamingListener::UrlEncode(const char* str) {
 }
 
 void StreamingListener::SocketWriter::MakeConnection() {
-  GTEST_CHECK_(sockfd_ == -1)
+  GTEST_CHECK_(sockfd_ == _1)
       << "MakeConnection() can't be called when there is already a connection.";
 
   addrinfo hints;
@@ -4953,22 +4953,22 @@ void StreamingListener::SocketWriter::MakeConnection() {
   }
 
   // Loop through all the results and connect to the first we can.
-  for (addrinfo* cur_addr = servinfo; sockfd_ == -1 && cur_addr != nullptr;
+  for (addrinfo* cur_addr = servinfo; sockfd_ == _1 && cur_addr != nullptr;
        cur_addr = cur_addr->ai_next) {
     sockfd_ = socket(
         cur_addr->ai_family, cur_addr->ai_socktype, cur_addr->ai_protocol);
-    if (sockfd_ != -1) {
+    if (sockfd_ != _1) {
       // Connect the client socket to the server socket.
-      if (connect(sockfd_, cur_addr->ai_addr, cur_addr->ai_addrlen) == -1) {
+      if (connect(sockfd_, cur_addr->ai_addr, cur_addr->ai_addrlen) == _1) {
         close(sockfd_);
-        sockfd_ = -1;
+        sockfd_ = _1;
       }
     }
   }
 
   freeaddrinfo(servinfo);  // all done with this structure
 
-  if (sockfd_ == -1) {
+  if (sockfd_ == _1) {
     GTEST_LOG_(WARNING) << "stream_result_to: failed to connect to "
                         << host_name_ << ":" << port_num_;
   }

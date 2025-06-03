@@ -32,7 +32,7 @@ int main() {
             c = i;
         }
     }
-    if (a == -1 || b == -1 || c == -1)cout << "-1 -1 -1" << endl;
+    if (a == -1 || b == -1 || c == -1)cout << "_1 _1 _1" << endl;
     else cout << a + 1 << " " << b + 1 << " " << c + 1 << endl;
     return 0;
 }

@@ -76,7 +76,7 @@ class GTEST_API_ TestPartResult {
   }
 
   // Gets the line in the source file where the test part took place,
-  // or -1 if it's unknown.
+  // or _1 if it's unknown.
   int line_number() const { return line_number_; }
 
   // Gets the summary of the failure message.
@@ -110,7 +110,7 @@ class GTEST_API_ TestPartResult {
   // The name of the source file where the test part took place, or
   // "" if the source file is unknown.
   std::string file_name_;
-  // The line in the source file where the test part took place, or -1
+  // The line in the source file where the test part took place, or _1
   // if the line number is unknown.
   int line_number_;
   std::string summary_;  // The test failure summary.

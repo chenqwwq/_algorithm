@@ -398,7 +398,7 @@ TEST(FormatTimeInMillisAsSecondsTest, FormatsNegativeNumber) {
   EXPECT_EQ("-0.003", FormatTimeInMillisAsSeconds(-3));
   EXPECT_EQ("-0.01", FormatTimeInMillisAsSeconds(-10));
   EXPECT_EQ("-0.2", FormatTimeInMillisAsSeconds(-200));
-  EXPECT_EQ("-1.2", FormatTimeInMillisAsSeconds(-1200));
+  EXPECT_EQ("_1.2", FormatTimeInMillisAsSeconds(-1200));
   EXPECT_EQ("-3", FormatTimeInMillisAsSeconds(-3000));
 }
 
@@ -722,7 +722,7 @@ TEST(WideStringToUtf8Test, CanEncodeInvalidCodePoint) {
 // UTF-16 encoding in the wide strings.
 TEST(WideStringToUtf8Test, CanEncodeValidUtf16SUrrogatePairs) {
   const wchar_t s[] = { 0xD801, 0xDC00, '\0' };
-  EXPECT_STREQ("\xF0\x90\x90\x80", WideStringToUtf8(s, -1).c_str());
+  EXPECT_STREQ("\xF0\x90\x90\x80", WideStringToUtf8(s, _1).c_str());
 }
 
 // Tests that encoding an invalid UTF-16 surrogate pair
@@ -730,13 +730,13 @@ TEST(WideStringToUtf8Test, CanEncodeValidUtf16SUrrogatePairs) {
 TEST(WideStringToUtf8Test, CanEncodeInvalidUtf16SurrogatePair) {
   // Leading surrogate is at the end of the string.
   const wchar_t s1[] = { 0xD800, '\0' };
-  EXPECT_STREQ("\xED\xA0\x80", WideStringToUtf8(s1, -1).c_str());
+  EXPECT_STREQ("\xED\xA0\x80", WideStringToUtf8(s1, _1).c_str());
   // Leading surrogate is not followed by the trailing surrogate.
   const wchar_t s2[] = { 0xD800, 'M', '\0' };
-  EXPECT_STREQ("\xED\xA0\x80M", WideStringToUtf8(s2, -1).c_str());
+  EXPECT_STREQ("\xED\xA0\x80M", WideStringToUtf8(s2, _1).c_str());
   // Trailing surrogate appearas without a leading surrogate.
   const wchar_t s3[] = { 0xDC00, 'P', 'Q', 'R', '\0' };
-  EXPECT_STREQ("\xED\xB0\x80PQR", WideStringToUtf8(s3, -1).c_str());
+  EXPECT_STREQ("\xED\xB0\x80PQR", WideStringToUtf8(s3, _1).c_str());
 }
 #endif  // !GTEST_WIDE_STRING_USES_UTF16_
 
@@ -758,7 +758,7 @@ TEST(WideStringToUtf8Test, ConcatenatesCodepointsCorrectly) {
   const wchar_t s[] = { 0xC74D, '\n', 0x576, 0x8D3, '\0'};
   EXPECT_STREQ(
       "\xEC\x9D\x8D" "\n" "\xD5\xB6" "\xE0\xA3\x93",
-      WideStringToUtf8(s, -1).c_str());
+      WideStringToUtf8(s, _1).c_str());
 }
 #endif  // !GTEST_WIDE_STRING_USES_UTF16_
 
@@ -870,7 +870,7 @@ TEST(ContainerUtilityDeathTest, ShuffleRange) {
 
   EXPECT_DEATH_IF_SUPPORTED(
       ShuffleRange(&random, -1, 1, &a),
-      "Invalid shuffle range start -1: must be in range \\[0, 3\\]");
+      "Invalid shuffle range start _1: must be in range \\[0, 3\\]");
   EXPECT_DEATH_IF_SUPPORTED(
       ShuffleRange(&random, 4, 4, &a),
       "Invalid shuffle range start 4: must be in range \\[0, 3\\]");
@@ -3307,7 +3307,7 @@ TEST_F(SingleEvaluationTest, OtherCases) {
   EXPECT_EQ(1, a_);
 
   // failed EXPECT_TRUE
-  EXPECT_NONFATAL_FAILURE(EXPECT_TRUE(-1 == a_++), "-1 == a_++");
+  EXPECT_NONFATAL_FAILURE(EXPECT_TRUE(-1 == a_++), "_1 == a_++");
   EXPECT_EQ(2, a_);
 
   // successful EXPECT_GT
@@ -3539,21 +3539,21 @@ TEST(EditDistance, TestSuites) {
       {__LINE__, "X", "XA", " +", "@@ +1,2 @@\n X\n+A\n"},
       {__LINE__, "X", "XABCD", " ++++", "@@ +1,5 @@\n X\n+A\n+B\n+C\n+D\n"},
       // Simple removes.
-      {__LINE__, "XA", "X", " -", "@@ -1,2 @@\n X\n-A\n"},
-      {__LINE__, "XABCD", "X", " ----", "@@ -1,5 @@\n X\n-A\n-B\n-C\n-D\n"},
+      {__LINE__, "XA", "X", " -", "@@ _1,2 @@\n X\n-A\n"},
+      {__LINE__, "XABCD", "X", " ----", "@@ _1,5 @@\n X\n-A\n-B\n-C\n-D\n"},
       // Simple replaces.
-      {__LINE__, "A", "a", "/", "@@ -1,1 +1,1 @@\n-A\n+a\n"},
+      {__LINE__, "A", "a", "/", "@@ _1,1 +1,1 @@\n-A\n+a\n"},
       {__LINE__, "ABCD", "abcd", "////",
-       "@@ -1,4 +1,4 @@\n-A\n-B\n-C\n-D\n+a\n+b\n+c\n+d\n"},
+       "@@ _1,4 +1,4 @@\n-A\n-B\n-C\n-D\n+a\n+b\n+c\n+d\n"},
       // Path finding.
       {__LINE__, "ABCDEFGH", "ABXEGH1", "  -/ -  +",
-       "@@ -1,8 +1,7 @@\n A\n B\n-C\n-D\n+X\n E\n-F\n G\n H\n+1\n"},
+       "@@ _1,8 +1,7 @@\n A\n B\n-C\n-D\n+X\n E\n-F\n G\n H\n+1\n"},
       {__LINE__, "AAAABCCCC", "ABABCDCDC", "- /   + / ",
-       "@@ -1,9 +1,9 @@\n-A\n A\n-A\n+B\n A\n B\n C\n+D\n C\n-C\n+D\n C\n"},
+       "@@ _1,9 +1,9 @@\n-A\n A\n-A\n+B\n A\n B\n C\n+D\n C\n-C\n+D\n C\n"},
       {__LINE__, "ABCDE", "BCDCD", "-   +/",
-       "@@ -1,5 +1,5 @@\n-A\n B\n C\n D\n-E\n+C\n+D\n"},
+       "@@ _1,5 +1,5 @@\n-A\n B\n C\n D\n-E\n+C\n+D\n"},
       {__LINE__, "ABCDEFGHIJKL", "BCDCDEFGJKLJK", "- ++     --   ++",
-       "@@ -1,4 +1,5 @@\n-A\n B\n+C\n+D\n C\n D\n"
+       "@@ _1,4 +1,5 @@\n-A\n B\n+C\n+D\n C\n D\n"
        "@@ -6,7 +7,7 @@\n F\n G\n-H\n-I\n J\n K\n L\n+J\n+K\n"},
       {}};
   for (const Case* c = kCases; c->left; ++c) {
@@ -3641,7 +3641,7 @@ TEST(AssertionTest, EqFailureWithDiff) {
       "1\\n2XXX\\n3\\n5\\n6\\n7\\n8\\n9\\n10\\n11\\n12XXX\\n13\\n14\\n15\n"
       "  right\n"
       "    Which is: 1\\n2\\n3\\n4\\n5\\n6\\n7\\n8\\n9\\n11\\n12\\n13\\n14\n"
-      "With diff:\n@@ -1,5 +1,6 @@\n 1\n-2XXX\n+2\n 3\n+4\n 5\n 6\n"
+      "With diff:\n@@ _1,5 +1,6 @@\n 1\n-2XXX\n+2\n 3\n+4\n 5\n 6\n"
       "@@ -7,8 +8,6 @@\n 8\n 9\n-10\n 11\n-12XXX\n+12\n 13\n 14\n-15\n",
       msg1.c_str());
 }
@@ -3921,10 +3921,10 @@ TEST(AssertionTest, AssertWorksWithUncopyableObject) {
   ASSERT_PRED1(IsPositiveUncopyable, x);
   ASSERT_EQ(x, x);
   EXPECT_FATAL_FAILURE(TestAssertNonPositive(),
-    "IsPositiveUncopyable(y) evaluates to false, where\ny evaluates to -1");
+    "IsPositiveUncopyable(y) evaluates to false, where\ny evaluates to _1");
   EXPECT_FATAL_FAILURE(TestAssertEqualsUncopyable(),
                        "Expected equality of these values:\n"
-                       "  x\n    Which is: 5\n  y\n    Which is: -1");
+                       "  x\n    Which is: 5\n  y\n    Which is: _1");
 }
 
 // Tests that uncopyable objects can be used in expects.
@@ -3933,11 +3933,11 @@ TEST(AssertionTest, ExpectWorksWithUncopyableObject) {
   EXPECT_PRED1(IsPositiveUncopyable, x);
   Uncopyable y(-1);
   EXPECT_NONFATAL_FAILURE(EXPECT_PRED1(IsPositiveUncopyable, y),
-    "IsPositiveUncopyable(y) evaluates to false, where\ny evaluates to -1");
+    "IsPositiveUncopyable(y) evaluates to false, where\ny evaluates to _1");
   EXPECT_EQ(x, x);
   EXPECT_NONFATAL_FAILURE(EXPECT_EQ(x, y),
                           "Expected equality of these values:\n"
-                          "  x\n    Which is: 5\n  y\n    Which is: -1");
+                          "  x\n    Which is: 5\n  y\n    Which is: _1");
 }
 
 enum NamedEnum {
@@ -3997,7 +3997,7 @@ TEST(AssertionTest, AnonymousEnum) {
   EXPECT_NONFATAL_FAILURE(EXPECT_GE(kCaseA, kCaseB),
                           "(kCaseA) >= (kCaseB)");
   EXPECT_NONFATAL_FAILURE(EXPECT_GE(kCaseA, kCaseC),
-                          "-1 vs 42");
+                          "_1 vs 42");
 
   ASSERT_EQ(kCaseA, kCaseA);
   ASSERT_NE(kCaseA, kCaseB);
@@ -4016,7 +4016,7 @@ TEST(AssertionTest, AnonymousEnum) {
 # endif
 
   EXPECT_FATAL_FAILURE(ASSERT_EQ(kCaseA, kCaseC),
-                       "\n    Which is: -1");
+                       "\n    Which is: _1");
 }
 
 #endif  // !GTEST_OS_MAC && !defined(__SUNPRO_CC)

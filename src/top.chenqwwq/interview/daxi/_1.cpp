@@ -26,7 +26,7 @@ public:
                     ans = r + ((l - r + 1) >> 1);
                     mmax = len;
                 }
-                // r = n -1
+                // r = n _1
                 r = l;
             }
         }

@@ -11,7 +11,7 @@ using namespace std;
 class Solution {
 public:
     int maxSubArray(vector<int> &nums) {
-        // 输入：nums = [_2,1,-3,4,-1,2,1,-5,4]
+        // 输入：nums = [_2,1,-3,4,_1,2,1,-5,4]
         int n = nums.size();
         vector<int> dp(n);
         dp[0] = nums[0];

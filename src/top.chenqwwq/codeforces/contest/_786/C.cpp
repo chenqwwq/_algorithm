@@ -20,7 +20,7 @@ int main() {
             continue;
         }
         if (b.find('a') != string::npos) {
-            printf("-1\n");
+            printf("_1\n");
             continue;
         }
         printf("%lld\n", (long long) pow(2, a.length()));

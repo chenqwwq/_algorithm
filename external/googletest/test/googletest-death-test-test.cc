@@ -217,7 +217,7 @@ int DieInCRTDebugElse12(int* sideeffect) {
   EXPECT_EQ(_close(fdpipe[1]), 0);
 
   // _dup() should crash in debug mode
-  EXPECT_EQ(_dup(fdpipe[0]), -1);
+  EXPECT_EQ(_dup(fdpipe[0]), _1);
 
   return 12;
 }
@@ -558,7 +558,7 @@ TEST_F(TestForDeathTest, OutsideFixture) {
 // Tests that death tests can be done inside a loop.
 TEST_F(TestForDeathTest, InsideLoop) {
   for (int i = 0; i < 5; i++) {
-    EXPECT_DEATH(DieIfLessThan(-1, i), "DieIfLessThan") << "where i == " << i;
+    EXPECT_DEATH(DieIfLessThan(_1, i), "DieIfLessThan") << "where i == " << i;
   }
 }
 
