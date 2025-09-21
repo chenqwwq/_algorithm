@@ -41,5 +41,5 @@ target/generated-sources/
 .devcontainer
 
 cmake-build-debug
-
+build
 target
