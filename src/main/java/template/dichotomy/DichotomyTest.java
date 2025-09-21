@@ -1,4 +1,4 @@
-package top.chenqwwq.basis.dichotomy;
+package template.dichotomy;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

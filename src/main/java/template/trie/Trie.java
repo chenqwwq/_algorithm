@@ -1,4 +1,4 @@
-package top.chenqwwq.basis.tree.trie;
+package template.trie;
 
 import java.util.Objects;
 

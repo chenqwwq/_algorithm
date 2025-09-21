@@ -1,4 +1,4 @@
-package top.chenqwwq.basis.sort;
+package template.sort;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

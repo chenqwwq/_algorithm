@@ -1,6 +1,5 @@
-package top.chenqwwq.basis.sort;
+package template.sort;
 
-import top.chenqwwq.basis.sort.Sort;
 
 /**
  * 冒泡排序

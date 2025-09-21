@@ -1,4 +1,4 @@
-package top.chenqwwq.basis.sort;
+package template.sort;
 
 /**
  * 选择排序
