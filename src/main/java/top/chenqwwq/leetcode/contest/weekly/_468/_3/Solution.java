@@ -11,7 +11,7 @@ public class Solution {
         boolean isEnd;
         int l, r;
 
-        public Node(){
+        public Node() {
             childs = new Node[10];
             isEnd = false;
         }
@@ -22,5 +22,6 @@ public class Solution {
         // 以 nums2 作为基准,对 nums1 做`
 
         Node root = new Node();
+        return 1;
     }
 }
