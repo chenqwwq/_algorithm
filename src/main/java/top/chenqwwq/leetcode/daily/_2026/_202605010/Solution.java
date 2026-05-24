@@ -1,4 +1,4 @@
-package top.chenqwwq.leetcode.daily._202605010;
+package top.chenqwwq.leetcode.daily._2026._202605010;
 
 import java.util.Arrays;
 

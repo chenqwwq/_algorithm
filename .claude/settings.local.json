@@ -4,7 +4,20 @@
       "Bash(javac:*)",
       "Bash(java:*)",
       "Bash(cat:*)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Bash(mvn compile:*)",
+      "WebSearch",
+      "Bash(which brew:*)",
+      "Read(//private/etc/**)",
+      "Bash(brew install:*)",
+      "Bash(xattr \"src/main/java/top/chenqwwq/leetcode/contest/weekly/_502/_2/Solution.java\" 2>&1)",
+      "Bash(chmod 644 \"src/main/java/top/chenqwwq/leetcode/contest/weekly/_502/_2/Solution.java\")",
+      "Bash(ulimit -n)",
+      "Bash(for dir:*)",
+      "Bash(ls -la src/main/java/top/chenqwwq/leetcode/daily/_2026/_20260414/Solution.java && file src/main/java/top/chenqwwq/leetcode/daily/_2026/_20260414/Solution.java && xattr -l src/main/java/top/chenqwwq/leetcode/daily/_2026/_20260414/Solution.java)",
+      "Bash(/usr/libexec/java_home -V 2>&1)",
+      "Bash(brew uninstall:*)",
+      "Bash(brew search:*)"
     ]
   }
 }

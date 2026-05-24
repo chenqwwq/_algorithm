@@ -54,6 +54,6 @@ public class Robot {
     }
 
     public String getDir() {
-
+        return dirs[d];
     }
 }
