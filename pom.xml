@@ -16,6 +16,9 @@
                 <configuration>
                     <source>22</source>
                     <target>22</target>
+                    <excludes>
+                        <exclude>**/_archive/**/*.java</exclude>
+                    </excludes>
                 </configuration>
             </plugin>
         </plugins>
