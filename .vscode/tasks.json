@@ -1,0 +1,104 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Java: run current file",
+      "type": "shell",
+      "command": "java",
+      "args": [
+        "${file}"
+      ],
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      },
+      "problemMatcher": "$javac"
+    },
+    {
+      "label": "Go: run current file",
+      "type": "shell",
+      "command": "go",
+      "args": [
+        "run",
+        "${file}"
+      ],
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      },
+      "problemMatcher": "$go"
+    },
+    {
+      "label": "CMake: configure",
+      "type": "shell",
+      "command": "cmake",
+      "args": [
+        "-S",
+        "${workspaceFolder}",
+        "-B",
+        "${workspaceFolder}/build/cmake-debug"
+      ],
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      },
+      "problemMatcher": "$gcc"
+    },
+    {
+      "label": "CMake: build all",
+      "type": "shell",
+      "command": "cmake",
+      "args": [
+        "--build",
+        "${workspaceFolder}/build/cmake-debug",
+        "--parallel"
+      ],
+      "dependsOn": "CMake: configure",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      },
+      "problemMatcher": "$gcc"
+    },
+    {
+      "label": "C/C++: build current file with CMake",
+      "type": "shell",
+      "command": "target='${relativeFile}'; target=${target//\\//.}; cmake --build '${workspaceFolder}/build/cmake-debug' --target \"obj.$target\" --parallel",
+      "dependsOn": "CMake: configure",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      },
+      "problemMatcher": "$gcc"
+    },
+    {
+      "label": "C/C++: run current CMake target",
+      "type": "shell",
+      "command": "target='${relativeFile}'; target=${target//\\//.}; '${workspaceFolder}/build/cmake-debug/bin/'\"$target\"",
+      "dependsOn": "C/C++: build current file with CMake",
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      },
+      "problemMatcher": []
+    }
+  ]
+}

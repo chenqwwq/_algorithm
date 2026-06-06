@@ -18,13 +18,17 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 include_directories(${PROJECT_SOURCE_DIR}/src/include)
 
-# 遍历项目根目录下所有的 C/C++ 文件
-file(GLOB_RECURSE FILES CONFIGURE_DEPENDS *.c *.cc *.cpp *.cxx)
-list(FILTER FILES EXCLUDE REGEX ".*/cmake-build[^/]*/.*")
-list(FILTER FILES EXCLUDE REGEX ".*/build/.*")
-list(FILTER FILES EXCLUDE REGEX ".*/CMakeFiles/.*")
-list(FILTER FILES EXCLUDE REGEX ".*/external/.*")
-list(FILTER FILES EXCLUDE REGEX ".*/target/.*")
+# 遍历当前 C/C++ 解题目录，历史归档 _archive 不参与默认构建。
+file(GLOB_RECURSE FILES CONFIGURE_DEPENDS
+        ${PROJECT_SOURCE_DIR}/src/c/*.c
+        ${PROJECT_SOURCE_DIR}/src/c/*.cc
+        ${PROJECT_SOURCE_DIR}/src/c/*.cpp
+        ${PROJECT_SOURCE_DIR}/src/c/*.cxx
+        ${PROJECT_SOURCE_DIR}/src/cpp/*.c
+        ${PROJECT_SOURCE_DIR}/src/cpp/*.cc
+        ${PROJECT_SOURCE_DIR}/src/cpp/*.cpp
+        ${PROJECT_SOURCE_DIR}/src/cpp/*.cxx
+        )
 foreach (file ${FILES})
     file(RELATIVE_PATH exe ${CMAKE_CURRENT_SOURCE_DIR} ${file}) # 获取相对路径
     string(REGEX REPLACE "/" "." exe ${exe})
