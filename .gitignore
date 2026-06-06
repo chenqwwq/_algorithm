@@ -37,7 +37,11 @@ hs_err_pid*
 
 target/classes/META-INF/
 target/generated-sources/
-.vscode
+.vscode/*
+!.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/extensions.json
 .devcontainer
 
 cmake-build-debug
