@@ -1,10 +1,6 @@
 {
   "cmake.buildDirectory": "${workspaceFolder}/build/cmake-debug",
-
-  // 排除 _archive 目录，不参与 Java Language Server 索引
-  "java.project.resourceFilters": [
-    "node_modules",
-    ".git",
+  "java.import.exclusions": [
     "**/_archive/**"
   ],
 
@@ -20,5 +16,6 @@
   "amazonq.enable": false,
   "blackbox.enable": false,
   "sourcegraph.cody.enable": false,
-  "pieces.enable": false
+  "pieces.enable": false,
+  "java.configuration.updateBuildConfiguration": "interactive"
 }

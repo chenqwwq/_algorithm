@@ -1,0 +1,8 @@
+#!/bin/sh
+set -e
+
+node scripts/update-progress.js
+
+if ! git diff --quiet -- README.md; then
+  git add README.md
+fi
