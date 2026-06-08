@@ -1,6 +1,10 @@
-# _algorithm
+# ⚡ _algorithm
 
-多语言算法题仓库，包含 Java、C、C++、Go 等语言的题解、模板和历史归档代码。
+> **One problem, multiple languages. Zero excuses.**
+
+Multi-language algorithm playground — Java ☕ · C++ 🔷 · Go 🐹
+Solutions for LeetCode Daily / Weekly / Biweekly contests and interview prep.
+Auto-tracked progress, auto-updated README.
 
 ## 📊 刷题进度
 
@@ -33,14 +37,10 @@
 
 ```text
 src/
-  java/              # Java 当前题目和 Java 模板，Maven sourceDirectory
-  cpp/               # C++ 当前题目和 C++ 模板，CMake 默认扫描
-  c/                 # C 当前题目，CMake 默认扫描
-  go/                # Go 当前题目和 Go 模板
+  java/              # Java 当前题目和模板，Maven sourceDirectory
+  cpp/               # C++ 当前题目和模板，CMake 默认扫描
+  go/                # Go 当前题目和模板
   include/           # C/C++ 公共 include
-  main/java/_archive # 历史归档，保留原状
 docs/
   templates/algorithm # 模板说明文档
 ```
-
-`src/main/java/_archive` 为历史归档目录，不参与默认构建。
