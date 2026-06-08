@@ -1,4 +1,4 @@
-package top.chenqwwq.leetcode.daily._20260523;
+package top.chenqwwq.leetcode.daily._2026._20260523;
 
 /**
  * @author chenqwwq

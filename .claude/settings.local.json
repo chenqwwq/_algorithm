@@ -17,7 +17,16 @@
       "Bash(ls -la src/main/java/top/chenqwwq/leetcode/daily/_2026/_20260414/Solution.java && file src/main/java/top/chenqwwq/leetcode/daily/_2026/_20260414/Solution.java && xattr -l src/main/java/top/chenqwwq/leetcode/daily/_2026/_20260414/Solution.java)",
       "Bash(/usr/libexec/java_home -V 2>&1)",
       "Bash(brew uninstall:*)",
-      "Bash(brew search:*)"
+      "Bash(brew search:*)",
+      "Read(//opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home/bin/**)",
+      "Bash(/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home/bin/java -version)",
+      "Bash(code --list-extensions)",
+      "Bash(cat ~/.vscode/extensions/extensions.json 2>/dev/null | grep -oE '\"identifier\":\\\\s*\\\\{[^}]*\"id\":\\\\s*\"[^\"]*\"' | grep -iE \"copilot|codeium|tabnine|supermaven|continue|cursor|cline|augment|amazonq|blackbox|pieces|mintlify|sourcegraph\" || echo \"未检测到\")",
+      "Read(//Users/chenqwwq/.vscode/extensions/**)",
+      "Bash(mkdir -p /Users/chenqwwq/Desktop/chenqwwq/pro/_algorithm/.vscode)"
+    ],
+    "additionalDirectories": [
+      "/Users/chenqwwq/Desktop/chenqwwq/pro/_algorithm"
     ]
   }
 }
