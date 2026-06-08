@@ -1,4 +1,4 @@
-# ⚡ _algorithm
+# ⚡ algo-grind
 
 > **One problem, multiple languages. Zero excuses.**
 
