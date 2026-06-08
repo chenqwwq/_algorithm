@@ -18,13 +18,8 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 include_directories(${PROJECT_SOURCE_DIR}/src/include)
 
-# 遍历当前 C/C++ 解题目录，历史归档 _archive 不参与默认构建。
+# 遍历 C++ 解题目录
 file(GLOB_RECURSE FILES CONFIGURE_DEPENDS
-        ${PROJECT_SOURCE_DIR}/src/c/*.c
-        ${PROJECT_SOURCE_DIR}/src/c/*.cc
-        ${PROJECT_SOURCE_DIR}/src/c/*.cpp
-        ${PROJECT_SOURCE_DIR}/src/c/*.cxx
-        ${PROJECT_SOURCE_DIR}/src/cpp/*.c
         ${PROJECT_SOURCE_DIR}/src/cpp/*.cc
         ${PROJECT_SOURCE_DIR}/src/cpp/*.cpp
         ${PROJECT_SOURCE_DIR}/src/cpp/*.cxx
