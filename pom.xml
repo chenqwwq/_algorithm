@@ -14,8 +14,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.14.0</version>
                 <configuration>
-                    <source>22</source>
-                    <target>22</target>
+                    <source>25</source>
+                    <target>25</target>
                     <excludes>
                         <exclude>**/_archive/**/*.java</exclude>
                     </excludes>
@@ -27,7 +27,8 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.2</version>
+            <version>1.18.46</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.openjdk.jmh</groupId>

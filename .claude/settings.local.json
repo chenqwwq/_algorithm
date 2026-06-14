@@ -23,7 +23,12 @@
       "Bash(code --list-extensions)",
       "Bash(cat ~/.vscode/extensions/extensions.json 2>/dev/null | grep -oE '\"identifier\":\\\\s*\\\\{[^}]*\"id\":\\\\s*\"[^\"]*\"' | grep -iE \"copilot|codeium|tabnine|supermaven|continue|cursor|cline|augment|amazonq|blackbox|pieces|mintlify|sourcegraph\" || echo \"未检测到\")",
       "Read(//Users/chenqwwq/.vscode/extensions/**)",
-      "Bash(mkdir -p /Users/chenqwwq/Desktop/chenqwwq/pro/_algorithm/.vscode)"
+      "Bash(mkdir -p /Users/chenqwwq/Desktop/chenqwwq/pro/_algorithm/.vscode)",
+      "Bash(ssh -T git@github.com -o ConnectTimeout=10 2>&1 || true)",
+      "Bash(gh repo:*)",
+      "Bash(code --install-extension vscjava.vscode-java-pack 2>&1)",
+      "Bash(\"/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code\" --install-extension vscjava.vscode-java-pack 2>&1)",
+      "Bash(\"/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code\" --list-extensions --show-versions 2>/dev/null | grep -i redhat)"
     ],
     "additionalDirectories": [
       "/Users/chenqwwq/Desktop/chenqwwq/pro/_algorithm"
