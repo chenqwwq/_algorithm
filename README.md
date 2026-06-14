@@ -13,14 +13,14 @@ Auto-tracked progress, auto-updated README.
 
 | 🧭 总览 | 数量 |
 | --- | ---: |
-| 题目目录 | 118 |
+| 题目目录 | 119 |
 
 ### 🗂️ 按分类
 
 | 分类 | 题目目录 |
 | --- | ---: |
 | 📅 LeetCode Daily | 51 |
-| 🏁 LeetCode Weekly | 48 |
+| 🏁 LeetCode Weekly | 49 |
 | ⚡ LeetCode Biweekly | 17 |
 | 💼 Interview | 2 |
 
@@ -28,7 +28,7 @@ Auto-tracked progress, auto-updated README.
 
 | 语言 | 题目目录 |
 | --- | ---: |
-| ☕ Java | 113 |
+| ☕ Java | 114 |
 | 🔷 C++ | 4 |
 | 🐹 Go | 1 |
 <!-- PROGRESS:END -->

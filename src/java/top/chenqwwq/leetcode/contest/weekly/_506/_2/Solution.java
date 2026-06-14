@@ -7,11 +7,6 @@ import java.util.Map;
 
 public class Solution {
 
-    static void main() {
-        final Solution solution = new Solution();
-        System.out.println(solution.getLength(new int[]{1, 2, 2, 1, 2, 3, 3, 3}));
-    }
-
     public int getLength(int[] nums) {
         final int n = nums.length;
         int ans = 1;
